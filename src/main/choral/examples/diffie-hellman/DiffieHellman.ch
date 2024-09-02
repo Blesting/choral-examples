@@ -7,7 +7,7 @@ import choral.examples.bipair.BiPair;
 public class DiffieHellman@(Alice,Bob) {
 
     public static BiPair@(Alice,Bob)<BigInteger,BigInteger> exchangeKeys (
-        SymDataChannel@(Alice,Bob)<BigInteger> channel,
+        SymDataChannel@(Alice,Bob)<Object> channel,
         BigInteger@Alice aPrivKey,
         BigInteger@Bob   bPrivKey,
         BigInteger@Alice aSharedGenerator,

@@ -1,5 +1,6 @@
 package choral.examples.diffiehellman;
 
+import choral.channels.SymDataChannel_A;
 import choral.runtime.Media.ServerSocketByteChannel;
 import choral.runtime.serializers.JavaSerializer;
 import choral.runtime.WrapperByteChannel.WrapperByteChannel_A;
@@ -25,7 +26,7 @@ public class Alice {
         );
 
         BigInteger privateKey = new BigInteger("1234567890");
-        BiPair_A<BigInteger> result = DiffieHellman_Alice.exchangeKeys(
+        BiPair_A<BigInteger,BigInteger> result = DiffieHellman_Alice.exchangeKeys(
             channel,
             privateKey,
             Config.SHARED_GENERATOR,

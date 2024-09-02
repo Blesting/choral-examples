@@ -21,7 +21,7 @@ public class Bob {
 		);
 
         BigInteger privateKey = new BigInteger("0987654321");
-        BiPair_B<BigInteger> result = DiffieHellman_Bob.exchangeKeys(
+        BiPair_B<BigInteger,BigInteger> result = DiffieHellman_Bob.exchangeKeys(
             channel,
             privateKey,
             Config.SHARED_GENERATOR,
