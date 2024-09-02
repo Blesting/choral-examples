@@ -1,11 +1,12 @@
 package choral.examples.diffiehellman;
 
-import choral.channels.SymChannel_B;
 import choral.runtime.Media.ServerSocketByteChannel;
 import choral.runtime.serializers.JavaSerializer;
-import choral.runtime.WrapperByteChannel.WrapperByteChannel_B;
-import choral.runtime.SerializerChannel.SerializerChannel_B;
+import choral.runtime.WrapperByteChannel.WrapperByteChannel_A;
+import choral.runtime.SerializerChannel.SerializerChannel_A;
 import choral.examples.diffiehellman.DiffieHellman_Alice;
+import choral.examples.bipair.BiPair_A;
+import java.math.BigInteger;
 
 public class Alice {
 
@@ -16,12 +17,19 @@ public class Alice {
                 Config.ALICE_HOSTNAME, Config.BOB_PORT
             );
 
-        SerializerChannel_B channel = new SerializerChannel_B( 
+        SerializerChannel_A channel = new SerializerChannel_A( 
                 new JavaSerializer(),
-				new WrapperByteChannel_B( 
+				new WrapperByteChannel_A( 
                     listener.getNext()
                 )
         );
 
+        BigInteger privateKey = new BigInteger("1234567890");
+        BiPair_A<BigInteger> result = DiffieHellman_Alice.exchangeKeys(
+            channel,
+            privateKey,
+            Config.SHARED_GENERATOR,
+            Config.SHARED_PRIME
+        );
     }
 }
