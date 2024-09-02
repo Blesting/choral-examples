@@ -78,4 +78,14 @@ something like `choral-epp-myexample`, and you replace `<argument>BiPair</argume
 when you run `mvn compile`.
 
 To use your Choral code in Java, add a new directory to the `src/main/java/choral/examples`
-directory. Use the `diffie-hellman` example as a reference.
+directory. Use the `diffie-hellman` example as a reference. That directory contains 
+implementations of the Alice and Bob roles. (We call this the "driver code".) To run
+Alice and Bob, open two terminals in the root directory of this project. In
+the first terminal, run this:
+```bash
+mvn exec:java -Dexec.mainClass="choral.examples.diffiehellman.Alice"
+```
+In the second terminal, run this:
+```bash
+mvn exec:java -Dexec.mainClass="choral.examples.diffiehellman.Bob"
+```
