@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.ByteBuffer;
+import choral.runtime.Serializers.ChoralSerializer;
 
 public class JavaSerializer implements ChoralSerializer< Object, ByteBuffer > {
     

@@ -1,4 +1,4 @@
-package choral.examples.diffieHellman;
+package choral.examples.diffiehellman;
 
 import java.math.BigInteger;
 import choral.channels.SymDataChannel;
