@@ -50,8 +50,12 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <executions>
+                    <!-- 
+                    For each example, create a new execution. In the new execution, 
+                    update the id and the last argument given to the choral executable.
+                    -->
                     <execution>
-                        <id>choral-epp-irc</id>
+                        <id>choral-epp-bipair</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
@@ -63,7 +67,7 @@
                                 <argument>--sources=${project.basedir}/src/main/choral</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
-                                <argument>Irc</argument>
+                                <argument>BiPair</argument>
                             </arguments>
                         </configuration>
                     </execution>
