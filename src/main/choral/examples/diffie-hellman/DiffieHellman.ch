@@ -2,7 +2,7 @@ package choral.examples.diffieHellman;
 
 import java.math.BigInteger;
 import choral.channels.SymDataChannel;
-import choral.examples.biPair.BiPair;
+import choral.examples.bipair.BiPair;
 
 public class DiffieHellman@(Alice,Bob) {
 

@@ -1,4 +1,4 @@
-package choral.examples.BiPair;
+package choral.examples.bipair;
 
 public class BiPair@( A, B )< L@X, R@Y > {
 	private L@A left;
