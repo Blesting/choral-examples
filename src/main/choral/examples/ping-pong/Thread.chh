@@ -1,0 +1,9 @@
+package java.lang;
+
+public class Thread@A extends Object@A implements Runnable@A{
+    public void run(){
+    }
+
+    public static void sleep(long@A milis){
+    }
+}
