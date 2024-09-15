@@ -1,0 +1,8 @@
+package choral.examples.ssowithretry.utils;
+
+import java.lang.Object;
+
+public class Service@A {
+    public Object@A newToken(){
+    }
+}

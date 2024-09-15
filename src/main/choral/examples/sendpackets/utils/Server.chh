@@ -1,0 +1,20 @@
+package choral.examples.sendpackets.utils;
+
+import java.lang.Object;
+
+public class Server@A {
+
+	public Object@A file;
+	public int@A n;
+
+	public int@A packets( Object@A file ){
+	}
+
+	public Object@A mkPacket( Object@A file, int@A n ){
+	}
+
+	public Object@A readFile( String@A filename ){
+		
+	}
+
+}

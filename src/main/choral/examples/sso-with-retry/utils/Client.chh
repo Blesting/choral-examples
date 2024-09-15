@@ -1,0 +1,11 @@
+package choral.examples.ssowithretry.utils;
+
+import java.lang.Object;
+
+public class Client@A {
+    public Object@A creds(){
+    }
+    
+    public boolean@A again(){
+    }
+}

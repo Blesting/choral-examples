@@ -1,0 +1,7 @@
+package choral.examples.splitandcombine.utils;
+
+public class Worker@A {
+    public static Object@A run( Object@A task ){
+        return new Object@A();
+    }
+}

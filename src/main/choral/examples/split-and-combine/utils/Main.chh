@@ -1,0 +1,13 @@
+package choral.examples.splitandcombine.utils;
+
+public class Main@A {
+
+    public static Tasks@A split( Object@A task ){
+        return new Tasks@A();
+    }
+
+    public static Object@A combine( Object@A subTask1, Object@A subTask2 ){
+        return new Object@A();
+    }
+}
+
