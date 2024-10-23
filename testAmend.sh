@@ -1,11 +1,7 @@
+echo ""
 echo "== amend HelloRoles =="
-choral amend -s src/main/choral/amend -l src/main/choral/amend HelloRoles
+choral amend -s src/main/choral/amend/hello-roles -l src/main/choral/amend/hello-roles -t target/amend HelloRoles
 
-echo "== amend DiffieHellman =="
-choral amend -s src/main/choral/amend -l src/main/choral/amend DiffieHellman
-
-echo "== amend BiPair =="
-choral amend -s src/main/choral/amend -l src/main/choral/amend BiPair
-
-echo "== amend SendPackets =="
-choral amend -s src/main/choral/amend -l src/main/choral/amend SendPackets
+echo ""
+echo "== amend SimpleArithmetic =="
+choral amend -s src/main/choral/amend/simple-arithmetic -l src/main/choral/amend/simple-arithmetic -t target/amend SimpleArithmetic
