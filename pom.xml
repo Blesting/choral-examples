@@ -64,7 +64,7 @@
                             <executable>choral</executable>
                             <arguments>
                                 <argument>epp</argument>
-                                <argument>--sources=${project.basedir}/src/main/choral</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
                                 <argument>SplitAndCombine</argument>
@@ -81,7 +81,7 @@
                             <executable>choral</executable>
                             <arguments>
                                 <argument>epp</argument>
-                                <argument>--sources=${project.basedir}/src/main/choral</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
                                 <argument>SSOWithRetry</argument>
@@ -98,7 +98,7 @@
                             <executable>choral</executable>
                             <arguments>
                                 <argument>epp</argument>
-                                <argument>--sources=${project.basedir}/src/main/choral</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
                                 <argument>DownloadFile</argument>
@@ -115,7 +115,7 @@
                             <executable>choral</executable>
                             <arguments>
                                 <argument>epp</argument>
-                                <argument>--sources=${project.basedir}/src/main/choral</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
                                 <argument>SendPackets</argument>
@@ -132,7 +132,7 @@
                             <executable>choral</executable>
                             <arguments>
                                 <argument>epp</argument>
-                                <argument>--sources=${project.basedir}/src/main/choral</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
                                 <argument>PingPong</argument>
@@ -149,7 +149,7 @@
                             <executable>choral</executable>
                             <arguments>
                                 <argument>epp</argument>
-                                <argument>--sources=${project.basedir}/src/main/choral</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
                                 <argument>Quicksort</argument>
@@ -166,7 +166,7 @@
                             <executable>choral</executable>
                             <arguments>
                                 <argument>epp</argument>
-                                <argument>--sources=${project.basedir}/src/main/choral</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
                                 <argument>HelloRoles</argument>
@@ -183,7 +183,7 @@
                             <executable>choral</executable>
                             <arguments>
                                 <argument>epp</argument>
-                                <argument>--sources=${project.basedir}/src/main/choral</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
                                 <argument>BiPair</argument>
@@ -200,7 +200,7 @@
                             <executable>choral</executable>
                             <arguments>
                                 <argument>epp</argument>
-                                <argument>--sources=${project.basedir}/src/main/choral</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
                                 <argument>--headers=${project.basedir}/src/main/choral</argument>
                                 <argument>--target=${project.build.directory}/generated-sources/choral</argument>
                                 <argument>DiffieHellman</argument>
