@@ -1,0 +1,27 @@
+package choral.amend.simplemethodcalls.utils;
+
+import java.lang.Object;
+
+public class Client@A {
+
+	Object@A obj;
+
+	public void fun0(  ){
+	}
+
+	public void fun_in( int@A in ){
+	}
+
+	public void fun_in( int@A in1, int@A in2 ){
+	}
+
+	public void fun_in( String@A in ){
+	}
+
+    public int@A fun_out(  ){
+	}
+
+    public int@A fun_in_out( int@A in ){
+	}
+
+}

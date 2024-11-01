@@ -1,7 +1,7 @@
 package choral.amend.increments;
 
 class Increments@( A, B ) {
-	public void inc() {
+	public void fun() {
 		int@A a1 = 1@A; 
         int@B b1 = 2@B + 3@B;
         int@A a2 = 5@A + b1;
