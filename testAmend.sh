@@ -1,4 +1,8 @@
 echo ""
+echo "== amend BuyerSellerShipper =="
+choral amend -s src/main/choral/amend/buyer-seller-shipper -l src/main/choral/ -t target/amend BuyerSellerShipper
+
+echo ""
 echo "== amend SimpleMethodCalls =="
 choral amend -s src/main/choral/amend/simple-method-calls -l src/main/choral/amend/simple-method-calls -t target/amend SimpleMethodCalls
 
