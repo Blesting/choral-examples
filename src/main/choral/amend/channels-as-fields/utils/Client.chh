@@ -1,7 +1,7 @@
-package choral.amend.simplemethodcalls.utils;
+package choral.amend.channelsasfields.utils;
 
 import java.lang.Object;
-import choral.amend.simplemethodcalls.utils.Price;
+import choral.amend.channelsasfields.utils.Price;
 
 public class Client@A {
 

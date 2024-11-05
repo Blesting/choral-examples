@@ -1,4 +1,12 @@
 echo ""
+echo "== amend channelsAsArgs =="
+choral amend -s src/main/choral/amend/channels-as-args -l src/main/choral/ -t target/amend channelsAsArgs
+
+echo ""
+echo "== amend channelsAsFields =="
+choral amend -s src/main/choral/amend/channels-as-fields -l src/main/choral/ -t target/amend channelsAsFields
+
+echo ""
 echo "== amend BuyerSellerShipper =="
 choral amend -s src/main/choral/amend/buyer-seller-shipper -l src/main/choral/ -t target/amend BuyerSellerShipper
 
