@@ -1,0 +1,10 @@
+package choral.amend.splitandcombine.utils;
+
+public class Tasks@A{
+    public Object@A first(){
+        return new Object@A();
+    }
+    public Object@A second(){
+        return new Object@A();
+    }
+}

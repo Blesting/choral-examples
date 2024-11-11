@@ -1,4 +1,36 @@
 echo ""
+echo "== amend VitalsStreaming =="
+choral amend -s src/main/choral/amend/vitals-streaming -l src/main/choral/ -t target/amend VitalsStreaming
+
+echo ""
+echo "== amend SSOWithRetry =="
+choral amend -s src/main/choral/amend/sso-with-retry -l src/main/choral/ -t target/amend SSOWithRetry
+
+echo ""
+echo "== amend SplitAndCombine =="
+choral amend -s src/main/choral/amend/split-and-combine -l src/main/choral/ -t target/amend SplitAndCombine
+
+echo ""
+echo "== amend RemoteFunction =="
+choral amend -s src/main/choral/amend/remote-function -l src/main/choral/ -t target/amend RemoteFunction
+
+echo ""
+echo "== amend Mergesort =="
+choral amend -s src/main/choral/amend/mergesort -l src/main/choral/ -t target/amend Mergesort
+
+echo ""
+echo "== amend Karatsuba =="
+choral amend -s src/main/choral/amend/karatsuba -l src/main/choral/ -t target/amend Karatsuba
+
+echo ""
+echo "== amend SendPackets =="
+choral amend -s src/main/choral/amend/sendpackets -l src/main/choral/ -t target/amend SendPackets
+
+echo ""
+echo "== amend ConsumeItems =="
+choral amend -s src/main/choral/amend/consume-items -l src/main/choral/ -t target/amend ConsumeItems
+
+echo ""
 echo "== amend Quicksort =="
 choral amend -s src/main/choral/amend/quicksort -l src/main/choral/ -t target/amend Quicksort
 
