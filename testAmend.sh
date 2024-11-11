@@ -1,4 +1,12 @@
 echo ""
+echo "== amend DistributedAuthentication =="
+choral amend -s src/main/choral/amend/distributed-authentication -l src/main/choral/ -t target/amend DistributedAuthentication
+
+echo ""
+echo "== amend PingPong =="
+choral amend -s src/main/choral/amend/ping-pong -l src/main/choral/ -t target/amend PingPong
+
+echo ""
 echo "== amend VitalsStreaming =="
 choral amend -s src/main/choral/amend/vitals-streaming -l src/main/choral/ -t target/amend VitalsStreaming
 
