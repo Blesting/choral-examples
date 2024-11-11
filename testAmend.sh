@@ -1,10 +1,22 @@
 echo ""
-echo "== amend channelsAsArgs =="
-choral amend -s src/main/choral/amend/channels-as-args -l src/main/choral/ -t target/amend channelsAsArgs
+echo "== amend Quicksort =="
+choral amend -s src/main/choral/amend/quicksort -l src/main/choral/ -t target/amend Quicksort
 
 echo ""
-echo "== amend channelsAsFields =="
-choral amend -s src/main/choral/amend/channels-as-fields -l src/main/choral/ -t target/amend channelsAsFields
+echo "== amend SimpleReturns =="
+choral amend -s src/main/choral/amend/simple-returns -l src/main/choral/ -t target/amend SimpleReturns
+
+echo ""
+echo "== amend BiPair =="
+choral amend -s src/main/choral/amend/bipair -l src/main/choral/ -t target/amend BiPair
+
+echo ""
+echo "== amend ChannelsAsArgs =="
+choral amend -s src/main/choral/amend/channels-as-args -l src/main/choral/ -t target/amend ChannelsAsArgs
+
+echo ""
+echo "== amend ChannelsAsFields =="
+choral amend -s src/main/choral/amend/channels-as-fields -l src/main/choral/ -t target/amend ChannelsAsFields
 
 echo ""
 echo "== amend BuyerSellerShipper =="

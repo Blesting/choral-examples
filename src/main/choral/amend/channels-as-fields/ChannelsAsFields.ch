@@ -9,6 +9,9 @@ public class ChannelsAsFields@( A, B, C ){
 
 	SymChannel@( A, B )< Object > ch_AB;
 	SymChannel@( A, C )< Object > ch_AC;
+	int@A var;
+	String@B var2;
+	Object@C var3;
 
 	ChannelsAsFields( SymChannel@( A, B )< Object > ch_AB, SymChannel@( A, C )< Object > ch_AC ) {
 		this.ch_AB = ch_AB;
