@@ -13,5 +13,13 @@ class SimpleIfStatements@( A, B ) {
 
         if( c_B > 0@A ){} 
 
+        if( c_B == 0@A ){} 
+        
+        if( c_B + 0@A <  c_B * 2@A ){} 
+        
+        if( 1@A == 0@A ){} 
+        
+        if( c_B == c_A + c_B ){} 
+
 	}
 }
