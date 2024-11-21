@@ -2,6 +2,8 @@ package choral.amend.channelsasfields;
 
 import choral.amend.channelsasfields.utils.Client; 
 import choral.channels.SymChannel;
+import choral.channels.DiDataChannel;
+import choral.channels.DiSelectChannel;
 
 enum Signal@R{ SIG }
 
@@ -9,6 +11,8 @@ public class ChannelsAsFields@( A, B, C ){
 
 	SymChannel@( A, B )< Object > ch_AB;
 	SymChannel@( A, C )< Object > ch_AC;
+	DiDataChannel@( A, B )< Object > diData;
+	DiSelectChannel@( A, B ) diSelect;
 	int@A var;
 	String@B var2;
 	Object@C var3;
