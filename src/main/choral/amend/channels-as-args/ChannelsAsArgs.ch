@@ -7,33 +7,33 @@ import choral.channels.DiSelectChannel;
 
 enum Signal@R{ SIG }
 
-public class ChannelsAsArgs@( A, B ){
+public class ChannelsAsArgs@( First, Second ){
 
     public static void fun( 
-        SymChannel@( A, B )< Object > ch_AB, 
-        SymChannel@( A, B )< Object > ch_BA,
-        DiDataChannel@( A, B )< Object > diData,
-        DiSelectChannel@( A, B ) diSelect,
-		Client@A c_A, 
-		Client@B c_B
+        SymChannel@( First, Second )< Object > ch_FirstSecond, 
+        SymChannel@( First, Second )< Object > ch_SecondFirst,
+        DiDataChannel@( First, Second )< Object > diData,
+        DiSelectChannel@( First, Second ) diSelect,
+		Client@First c_First, 
+		Client@Second c_Second
     ) {
 
-        int@A i_A = 0@A;
-		int@B i_B = 0@B;
-		c_A.fun0();
-		c_A.fun_in( i_A );
-		// c_A.fun_in( i_B );
-		// c_A.fun_in( 0@B ); // illegal
+        int@First i_First = 0@First;
+		int@Second i_Second = 0@Second;
+		c_First.fun0();
+		c_First.fun_in( i_First );
+		c_First.fun_in( i_Second );
+		// c_First.fun_in( 0@Second ); // illegal
 
-		c_A.fun_in( c_A.fun_out() );
-		// c_A.fun_in( c_B.fun_out() );
+		c_First.fun_in( c_First.fun_out() );
+		c_First.fun_in( c_Second.fun_out() );
 
-		// c_A.fun_in( c_B.fun_in_out( c_A.fun_out() ) );
-		// c_A.fun_in( c_B.price.currency );
+		c_First.fun_in( c_Second.fun_in_out( c_First.fun_out() ) );
+		c_First.fun_in( c_Second.price.currency );
 
-		helper( i_A, i_B );
-		helper( 0@A, 0@B );
+		helper( i_First, i_Second );
+		helper( 0@First, 0@Second );
     }
 
-	private void helper(int@A in_A, int@B in_B){}
+	private void helper(int@First in_First, int@Second in_Second){}
 }
