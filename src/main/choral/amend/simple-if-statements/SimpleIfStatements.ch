@@ -1,9 +1,11 @@
 package choral.amend.SimpleIfStatements;
 
+import choral.channels.SymChannel;
+
 class SimpleIfStatements@( A, B ) {
-	public void fun() {
-		int@A c_A = 0@A;
-        int@B c_B = 0@B;
+	public void fun( SymChannel@( A, B )< Object > channel ) {
+		Integer@A c_A = 0@A;
+        Integer@B c_B = 0@B;
         
         if( 1@A < 4@A ){}
 
