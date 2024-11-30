@@ -1,6 +1,6 @@
 package choral.amend.channelsasargs;
 
-import choral.amend.simplemethodcalls.utils.Client; 
+import choral.amend.channelsasargs.utils.Client; 
 import choral.channels.SymChannel;
 import choral.channels.DiDataChannel;
 import choral.channels.DiSelectChannel;
@@ -18,8 +18,8 @@ public class ChannelsAsArgs@( First, Second ){
 		Client@Second c_Second
     ) {
 
-        int@First i_First = 0@First;
-		int@Second i_Second = 0@Second;
+        Integer@First i_First = 0@First;
+		Integer@Second i_Second = 0@Second;
 		c_First.fun0();
 		c_First.fun_in( i_First );
 		c_First.fun_in( i_Second );
@@ -28,12 +28,12 @@ public class ChannelsAsArgs@( First, Second ){
 		c_First.fun_in( c_First.fun_out() );
 		c_First.fun_in( c_Second.fun_out() );
 
-		c_First.fun_in( c_Second.fun_in_out( c_First.fun_out() ) );
+		// c_First.fun_in( c_Second.fun_in_out( c_First.fun_out() ) );
 		c_First.fun_in( c_Second.price.currency );
 
 		helper( i_First, i_Second );
 		helper( 0@First, 0@Second );
     }
 
-	private void helper(int@First in_First, int@Second in_Second){}
+	private void helper(Integer@First in_First, Integer@Second in_Second){}
 }

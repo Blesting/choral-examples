@@ -25,8 +25,8 @@ public class ChannelsAsFields@( First, Second, C ){
 
         String@First s_A = "A"@First;
 		String@Second s_B = s_A;
-		int@First i_A = 0@First;
-		int@Second i_B = 0@Second;
+		Integer@First i_A = 0@First;
+		Integer@Second i_B = 0@Second;
 		c_A.fun0();
 		c_A.fun_in( i_A );
 		c_A.fun_in( i_B );
@@ -35,12 +35,12 @@ public class ChannelsAsFields@( First, Second, C ){
 		c_A.fun_in( c_A.fun_out() );
 		c_A.fun_in( c_B.fun_out() );
 
-		c_A.fun_in( c_B.fun_in_out( c_A.fun_out() ) );
+		// c_A.fun_in( c_B.fun_in_out( c_A.fun_out() ) );
 		c_A.fun_in( c_B.price.currency );
 
 		helper( i_A, i_B );
 		helper( 0@First, 0@Second );
     }
 
-	private void helper(int@First in_A, int@Second in_B){}
+	private void helper(Integer@First in_A, Integer@Second in_B){}
 }
