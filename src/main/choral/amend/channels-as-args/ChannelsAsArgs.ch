@@ -26,9 +26,10 @@ public class ChannelsAsArgs@( First, Second ){
 		// c_First.fun_in( 0@Second ); // illegal
 
 		c_First.fun_in( c_First.fun_out() );
-		c_First.fun_in( c_Second.fun_out() );
+		// c_First.fun_in( c_Second.fun_out() );
+		c_Second.fun_in( c_First.fun_out() );
 
-		// c_First.fun_in( c_Second.fun_in_out( c_First.fun_out() ) );
+		c_First.fun_in( c_Second.fun_in_out( c_First.fun_in_out( c_Second.fun_out() ) ) );
 		c_First.fun_in( c_Second.price.currency );
 
 		helper( i_First, i_Second );
