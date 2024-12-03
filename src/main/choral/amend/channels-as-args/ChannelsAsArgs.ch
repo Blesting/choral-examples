@@ -4,6 +4,9 @@ import choral.amend.channelsasargs.utils.Client;
 import choral.channels.SymChannel;
 import choral.channels.DiDataChannel;
 import choral.channels.DiSelectChannel;
+import java.util.List;
+
+import java.util.ArrayList;
 
 enum Signal@R{ SIG }
 
@@ -18,6 +21,11 @@ public class ChannelsAsArgs@( First, Second ){
 		Client@Second c_Second
     ) {
 
+		ArrayList@First<Integer> list1_First = new ArrayList@First<Integer>();
+		ArrayList@Second<Integer> list1_Second = list1_First;
+		
+		ArrayList@First<ArrayList<Integer>> list2_First = new ArrayList@First<ArrayList<Integer>>();
+		ArrayList@Second<ArrayList<Integer>> list2_Second = list2_First;
         Integer@First i_First = 0@First;
 		Integer@Second i_Second = 0@Second;
 		c_First.fun0();
