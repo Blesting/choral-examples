@@ -1,11 +1,12 @@
 package choral.amend.simplemethodcalls;
 
 import choral.amend.simplemethodcalls.utils.Client; 
+import choral.channels.SymChannel;
 
 class SimpleMethodCalls@( A, B ) {
-	public void fun( Client@A c_A, Client@B c_B ) {
-		int@A i_A = 0@A;
-		int@B i_B = 0@B;
+	public void fun( Client@A c_A, Client@B c_B, SymChannel@( A, B )< Object > ch_AB ) {
+		Integer@A i_A = 0@A;
+		Integer@B i_B = 0@B;
 		c_A.fun0();
 		c_A.fun_in( i_A );
 		c_A.fun_in( i_B );
@@ -21,6 +22,6 @@ class SimpleMethodCalls@( A, B ) {
 		helper( 0@A, 0@B );
 	}
 
-	private void helper(int@A in_A, int@B in_B){}
+	private void helper(Integer@A in_A, Integer@B in_B){}
 
 }
