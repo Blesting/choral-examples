@@ -19,10 +19,6 @@ echo "== amend ChannelsAsArgs =="
 choral amend --verbosity=DEBUG -s src/main/choral/amend/channels-as-args -l src/main/choral/ -t target/amend ChannelsAsArgs
 
 echo ""
-echo "== amend Mergesort Copy=="
-choral amend -s "src/main/choral/amend/mergesort copy" -l "src/main/choral/amend/mergesort copy" -t target/amend Mergesort
-
-echo ""
 echo "== amend Quicksort =="
 choral amend -s src/main/choral/amend/quicksort -l src/main/choral/ -t target/amend Quicksort
 
@@ -37,10 +33,6 @@ choral amend -s src/main/choral/amend/buyer-seller-shipper -l src/main/choral/ -
 echo ""
 echo "== amend RemoteFunction =="
 choral amend -s src/main/choral/amend/remote-function -l src/main/choral/ -t target/amend RemoteFunction
-
-echo ""
-echo "== amend SendPackets copy =="
-choral amend -s "src/main/choral/amend/sendpackets copy" -l "src/main/choral/amend/sendpackets copy" -t target/amend SendPackets
 
 echo ""
 echo "== amend SimpleIfStatements =="
