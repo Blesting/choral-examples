@@ -1,10 +1,46 @@
 echo ""
-echo "== amend ChannelsAsArgs =="
-choral amend -s src/main/choral/amend/channels-as-args -l src/main/choral/ -t target/amend ChannelsAsArgs
+echo "== amend ChannelTypesExample =="
+choral amend -s src/main/choral/amend/channel-types-example -l src/main/choral/ -t target/amend ChannelTypesExample
+
+echo ""
+echo "== amend RemoteFunction =="
+choral amend -s src/main/choral/amend/remote-function -l src/main/choral/ -t target/amend RemoteFunction
 
 echo ""
 echo "== amend ChannelsAsFields =="
-choral amend -s src/main/choral/amend/channels-as-fields -l src/main/choral/ -t target/amend ChannelsAsFields
+choral amend --verbosity=DEBUG -s src/main/choral/amend/channels-as-fields -l src/main/choral/ -t target/amend ChannelsAsFields
+
+echo ""
+echo "== amend SimpleReturns =="
+choral amend -s src/main/choral/amend/simple-returns -l src/main/choral/ -t target/amend SimpleReturns
+
+echo ""
+echo "== amend ChannelsAsArgs =="
+choral amend --verbosity=DEBUG -s src/main/choral/amend/channels-as-args -l src/main/choral/ -t target/amend ChannelsAsArgs
+
+echo ""
+echo "== amend Mergesort Copy=="
+choral amend -s "src/main/choral/amend/mergesort copy" -l "src/main/choral/amend/mergesort copy" -t target/amend Mergesort
+
+echo ""
+echo "== amend Quicksort =="
+choral amend -s src/main/choral/amend/quicksort -l src/main/choral/ -t target/amend Quicksort
+
+echo ""
+echo "== amend Mergesort =="
+choral amend -s src/main/choral/amend/mergesort -l src/main/choral/ -t target/amend Mergesort
+
+echo ""
+echo "== amend BuyerSellerShipper =="
+choral amend -s src/main/choral/amend/buyer-seller-shipper -l src/main/choral/ -t target/amend BuyerSellerShipper
+
+echo ""
+echo "== amend RemoteFunction =="
+choral amend -s src/main/choral/amend/remote-function -l src/main/choral/ -t target/amend RemoteFunction
+
+echo ""
+echo "== amend SendPackets copy =="
+choral amend -s "src/main/choral/amend/sendpackets copy" -l "src/main/choral/amend/sendpackets copy" -t target/amend SendPackets
 
 echo ""
 echo "== amend SimpleIfStatements =="
@@ -23,14 +59,6 @@ echo "== amend SplitAndCombine =="
 choral amend -s src/main/choral/amend/split-and-combine -l src/main/choral/ -t target/amend SplitAndCombine
 
 echo ""
-echo "== amend RemoteFunction =="
-choral amend -s src/main/choral/amend/remote-function -l src/main/choral/ -t target/amend RemoteFunction
-
-echo ""
-echo "== amend Mergesort =="
-choral amend -s src/main/choral/amend/mergesort -l src/main/choral/ -t target/amend Mergesort
-
-echo ""
 echo "== amend SendPackets =="
 choral amend -s src/main/choral/amend/sendpackets -l src/main/choral/ -t target/amend SendPackets
 
@@ -39,20 +67,8 @@ echo "== amend ConsumeItems =="
 choral amend -s src/main/choral/amend/consume-items -l src/main/choral/ -t target/amend ConsumeItems
 
 echo ""
-echo "== amend Quicksort =="
-choral amend -s src/main/choral/amend/quicksort -l src/main/choral/ -t target/amend Quicksort
-
-echo ""
-echo "== amend SimpleReturns =="
-choral amend -s src/main/choral/amend/simple-returns -l src/main/choral/ -t target/amend SimpleReturns
-
-echo ""
 echo "== amend BiPair =="
 choral amend -s src/main/choral/amend/bipair -l src/main/choral/ -t target/amend BiPair
-
-echo ""
-echo "== amend BuyerSellerShipper =="
-choral amend -s src/main/choral/amend/buyer-seller-shipper -l src/main/choral/ -t target/amend BuyerSellerShipper
 
 echo ""
 echo "== amend SimpleMethodCalls =="
