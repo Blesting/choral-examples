@@ -1,6 +1,18 @@
 echo ""
+echo "== amend SimpleIfStatements =="
+choral amend -s src/main/choral/amend/simple-if-statements -l src/main/choral/amend/simple-if-statements -t target/amend SimpleIfStatements
+
+echo ""
+echo "== amend SimpleKOC =="
+choral amend -s src/main/choral/amend/simplekoc -l src/main/choral/amend/simplekoc -t target/amend SimpleKOC 
+
+echo ""
+echo "== amend OverloadOnRoles =="
+choral amend -s src/main/choral/amend/overload-on-roles -l src/main/choral/amend/overload-on-roles -t target/amend OverloadOnRoles 
+
+echo ""
 echo "== amend ChannelTypesExample =="
-choral amend -s src/main/choral/amend/channel-types-example -l src/main/choral/ -t target/amend ChannelTypesExample
+choral amend -s src/main/choral/amend/channel-types-example -l src/main/choral/ -t target/amend ChannelTypesExample 
 
 echo ""
 echo "== amend RemoteFunction =="
@@ -33,10 +45,6 @@ choral amend -s src/main/choral/amend/buyer-seller-shipper -l src/main/choral/ -
 echo ""
 echo "== amend RemoteFunction =="
 choral amend -s src/main/choral/amend/remote-function -l src/main/choral/ -t target/amend RemoteFunction
-
-echo ""
-echo "== amend SimpleIfStatements =="
-choral amend -s src/main/choral/amend/simple-if-statements -l src/main/choral/amend/simple-if-statements -t target/amend SimpleIfStatements
 
 echo ""
 echo "== amend PingPong =="
