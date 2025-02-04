@@ -1,4 +1,4 @@
-package choral.examples.quicksort;
+package choral.examples.mergesort;
 
 import choral.channels.SymChannel_A;
 import choral.channels.SymChannel_B;
@@ -11,7 +11,7 @@ import choral.runtime.WrapperByteChannel.WrapperByteChannel_B;
 import choral.runtime.SerializerChannel.SerializerChannel_A;
 import choral.runtime.SerializerChannel.SerializerChannel_B;
 import choral.runtime.Serializers.JavaSerializer;
-import choral.examples.Quicksort.Quicksort_A;
+import choral.examples.Mergesort.Mergesort_A;
 
 
 
@@ -37,8 +37,9 @@ public class A {
                 )
             )
         );
-        Quicksort_A quicksort = new Quicksort_A(channel_B, channel_C);
-        List<Integer> sortedList = quicksort.sort(input);
+
+        Mergesort_A mergesort = new Mergesort_A(channel_B, channel_C);
+        List<Integer> sortedList = mergesort.sort(input);
         listener_B.close();
         System.out.println("result from A: " + sortedList);
     }
@@ -66,10 +67,9 @@ public class A {
             )
         );
 
-        Quicksort_A quicksort = new Quicksort_A(channel_B, channel_C);
-        List<Integer> sortedList = quicksort.sort(Config.LIST);
+        Mergesort_A mergesort = new Mergesort_A(channel_B, channel_C);
+        List<Integer> sortedList = mergesort.sort(Config.LIST);
+        listener_B.close();
         System.out.println("result from A: " + sortedList);
     }
 }
-
-// mvn exec:java -Dexec.mainClass="choral.examples.quicksort.A"

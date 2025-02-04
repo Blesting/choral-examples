@@ -140,6 +140,23 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>choral-epp-mergesort</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>choral</executable>
+                            <arguments>
+                                <argument>epp</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
+                                <argument>--headers=${project.basedir}/src/main/choral</argument>
+                                <argument>--target=${project.build.directory}/generated-sources/choral</argument>
+                                <argument>Mergesort</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>choral-epp-quicksort</id>
                         <phase>generate-sources</phase>
                         <goals>
