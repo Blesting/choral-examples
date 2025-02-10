@@ -1,4 +1,4 @@
-package benchmarks.diffiehellman;
+package benchmarks.sendpackets;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +11,8 @@ import java.math.BigInteger;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 
+import choral.examples.sendpackets.utils.Client;
+import choral.examples.sendpackets.utils.Server;
 import choral.runtime.LocalChannel.LocalChannel_A;
 import choral.runtime.LocalChannel.LocalChannel_B;
 import choral.runtime.Media.MessageQueue;
@@ -106,47 +108,39 @@ public class Main {
         }
 
         private List<Thread> createThreads(){
-            BigInteger sharedGenerator = randomBigInteger().abs();
-            BigInteger sharedPrime = randomBigInteger().abs();
-            BigInteger privKeyAlice = randomBigInteger().abs();
-            BigInteger privKeyBob = randomBigInteger().abs();
+            Client client = new Client();
+            Server server = new Server();
             List< Thread > threads = new ArrayList<>();
 
-            MessageQueue AtoB = new MessageQueue();
-            MessageQueue BtoA = new MessageQueue();
-            LocalChannel_B ch_BA = new LocalChannel_B(BtoA, AtoB);
-            LocalChannel_A ch_AB = new LocalChannel_A(AtoB, BtoA);
+            MessageQueue CtoS = new MessageQueue();
+            MessageQueue StoC = new MessageQueue();
+            LocalChannel_A ch_CS = new LocalChannel_A(CtoS, StoC);
+            LocalChannel_B ch_SC = new LocalChannel_B(StoC, CtoS);
 
     
             Runnable runnAlice = new Runnable() {
                 public void run(){
                     try{
-                        Alice.main( ch_AB, privKeyAlice, sharedPrime, sharedGenerator );
+                        C.main( ch_CS, client );
                     } catch (Exception e){
                         e.printStackTrace();
                     }
                 }
             };
-            threads.add( new Thread( runnAlice, "Alice" ) );
+            threads.add( new Thread( runnAlice, "Client" ) );
     
             Runnable runnBob = new Runnable() {
                 public void run(){
                     try{
-                        Bob.main( ch_BA, privKeyBob, sharedPrime, sharedGenerator );
+                        S.main( ch_SC, server );
                     } catch (Exception e){
                         e.printStackTrace();
                     }
                 }
             };
-            threads.add( new Thread( runnBob, "Bob" ) );
+            threads.add( new Thread( runnBob, "Server" ) );
     
             return threads;
-        }
-
-        private BigInteger randomBigInteger(){
-            Random rd = new Random();
-            return new BigInteger( "" + rd.nextInt() );
-    
         }
     }
 }
