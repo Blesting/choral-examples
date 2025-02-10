@@ -1,4 +1,4 @@
-package choral.runtime.serializers;
+package choral.runtime.Serializers;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
