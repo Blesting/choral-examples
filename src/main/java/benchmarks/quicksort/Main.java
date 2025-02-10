@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.CyclicBarrier;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -29,7 +28,6 @@ public class Main {
             outputDir = String.join( fileSeparator, Arrays.copyOfRange(args, 2, args.length) ) + fileSeparator;
         }
         
-        // final CyclicBarrier gate = new CyclicBarrier(4);
         MainHelper helper = new MainHelper(inputLength, outputDir);
         helper.main( iterations );
     }
@@ -51,19 +49,20 @@ public class Main {
             List<Float> times = new ArrayList<>();
             for( int iter = 0; iter < iterations; iter++ ){
                 List<Thread> threads = createThreads();
-                threads.forEach(t -> t.start());
+                
                 try{
-                    long startTime = System.nanoTime();
-                    //gate.await();
+                    long startTime = System.nanoTime();     // start timer
+                    threads.forEach(t -> t.start());        // start threads
                     for( Thread thread : threads ){
-                        thread.join();
+                        thread.join();                      // wait for threads to finish
                     }
-                    long endTime = System.nanoTime();
+                    long endTime = System.nanoTime();       // stop timer
+                    
                     float totalTime = (endTime - startTime) / (float)1000000000;
                     times.add(totalTime);
 
                     // System.out.println( "total time: " + totalTime + " seconds" );
-                    System.out.println( "sim " + (iter+1) + " of " + iterations + " done" );
+                    System.out.print( "sim " + (iter+1) + " of " + iterations + " done\r" );
                     
                     
                 } catch ( Exception e ){
@@ -71,22 +70,33 @@ public class Main {
                 }
             }
 
+            System.out.println();
+
+            outputStats( times, outputDir + "output_" + inputLength + "_" + iterations + ".txt" );
+
+            outputStats(times);
+            
+        }
+
+        private void outputStats( List<Float> times, String filename ){
             try{
-                Files.createDirectories(Paths.get(outputDir));
-                FileWriter writer = new FileWriter( outputDir + "output_" + inputLength + "_" + iterations + ".txt"); 
+                Files.createDirectories(Paths.get(outputDir));      // create output dir
+                FileWriter writer = new FileWriter( filename );     // create output file
                 for(Float time : times) {
-                    writer.write( time + System.lineSeparator() );
+                    writer.write( time + System.lineSeparator() );  // write output
                 }
                 writer.close();
             } catch( IOException e ){
                 e.printStackTrace();
             }
+        }
+
+        private void outputStats( List<Float> times ){
             Collections.sort(times);
             System.out.println( "fastest: " + times.get(0) );
             System.out.println( "slowest: " + times.get(times.size()-1) );
             System.out.println( "average: " + average(times) );
             System.out.println( "median: " + times.get(times.size()/2) );
-            
         }
 
         private static Float average( List<Float> list ){
@@ -118,7 +128,6 @@ public class Main {
             Runnable runnB = new Runnable() {
                 public void run(){
                     try{
-                        //gate.await();
                         B.main( ch_BC, ch_BA );
                     } catch (Exception e){
                         e.printStackTrace();
@@ -130,7 +139,6 @@ public class Main {
             Runnable runnC = new Runnable() {
                 public void run(){
                     try{
-                        //gate.await();
                         C.main( ch_CA, ch_CB );
                     } catch (Exception e){
                         e.printStackTrace();
@@ -142,7 +150,6 @@ public class Main {
             Runnable runnA = new Runnable() {
                 public void run(){
                     try{
-                        //gate.await();
                         A.main( inputList, ch_AB, ch_AC );
                     } catch (Exception e){
                         e.printStackTrace();
