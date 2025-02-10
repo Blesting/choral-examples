@@ -3,7 +3,7 @@ package choral.examples.diffiehellman;
 import choral.runtime.Media.SocketByteChannel;
 import choral.runtime.WrapperByteChannel.WrapperByteChannel_B;
 import choral.runtime.SerializerChannel.SerializerChannel_B;
-import choral.runtime.serializers.JavaSerializer;
+import choral.runtime.Serializers.JavaSerializer;
 import choral.examples.diffiehellman.DiffieHellman_Bob;
 import choral.examples.bipair.BiPair_B;
 import java.math.BigInteger;

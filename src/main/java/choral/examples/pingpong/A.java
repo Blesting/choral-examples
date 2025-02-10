@@ -5,11 +5,11 @@ import choral.channels.DiSelectChannel_A;
 
 import choral.runtime.Media.ServerSocketByteChannel;
 import choral.runtime.Media.SocketByteChannel;
-import choral.runtime.serializers.JavaSerializer;
 import choral.runtime.WrapperByteChannel.WrapperByteChannel_A;
 import choral.runtime.WrapperByteChannel.WrapperByteChannel_B;
 import choral.runtime.SerializerChannel.SerializerChannel_A;
 import choral.runtime.SerializerChannel.SerializerChannel_B;
+import choral.runtime.Serializers.JavaSerializer;
 import choral.examples.pingpong.PingPong_A;
 
 public class A {

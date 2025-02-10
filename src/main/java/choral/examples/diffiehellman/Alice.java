@@ -2,7 +2,7 @@ package choral.examples.diffiehellman;
 
 import choral.channels.SymDataChannel_A;
 import choral.runtime.Media.ServerSocketByteChannel;
-import choral.runtime.serializers.JavaSerializer;
+import choral.runtime.Serializers.JavaSerializer;
 import choral.runtime.WrapperByteChannel.WrapperByteChannel_A;
 import choral.runtime.SerializerChannel.SerializerChannel_A;
 import choral.examples.diffiehellman.DiffieHellman_Alice;
