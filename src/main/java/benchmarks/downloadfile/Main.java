@@ -1,4 +1,4 @@
-package benchmarks.sendpackets;
+package benchmarks.downloadfile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,6 @@ import java.util.Random;
 
 import benchmarks.BenchmarkRunner;
 import benchmarks.IterationInitializer;
-
 import choral.examples.sendpackets.utils.Client;
 import choral.examples.sendpackets.utils.Server;
 import choral.runtime.LocalChannel.LocalChannel_A;
@@ -17,10 +16,11 @@ import choral.runtime.Media.MessageQueue;
 public class Main {
     public static void main( String[] args ){
         if( args.length < 2 )
-            throw new Error( "Must pass two arguments (The size of the list to send and the number of simulations to run)" );
+            throw new Error( "Must pass two arguments (The size of the list to download and the number of simulations to run)" );
         int filesize = Integer.valueOf(args[0]);
         int simulations = Integer.valueOf(args[1]);
         String outputDir = BenchmarkRunner.buildOutputDir( Arrays.copyOfRange(args, 2, args.length) );
+        System.out.println( outputDir );
         
         MainHelper helper = new MainHelper( outputDir, filesize );
         helper.main( simulations );
@@ -38,47 +38,49 @@ public class Main {
 
         public void main( int simulations ){
 
-            BenchmarkRunner bmr = new BenchmarkRunner( new CT(), outputDir, "output_" + filesize + "_" + simulations + ".txt" );
+            BenchmarkRunner bmr = new BenchmarkRunner( new CT(), outputDir, "output_" + simulations + ".txt" );
             bmr.run(simulations);
             
         }
 
+
         public class CT implements IterationInitializer{
-
+            
             public CT(){}
-
-            public List<Thread> initialize(){
+            
+            public  List<Thread> initialize(){
+                List< Thread > threads = new ArrayList<>();
                 Client client = new Client();
                 Server server = new Server( createList() );
-                List< Thread > threads = new ArrayList<>();
+
     
-                MessageQueue CtoS = new MessageQueue();
-                MessageQueue StoC = new MessageQueue();
-                LocalChannel_A ch_CS = new LocalChannel_A(CtoS, StoC);
-                LocalChannel_B ch_SC = new LocalChannel_B(StoC, CtoS);
+                MessageQueue AtoB = new MessageQueue();
+                MessageQueue BtoA = new MessageQueue();
+                LocalChannel_B ch_BA = new LocalChannel_B(BtoA, AtoB);
+                LocalChannel_A ch_AB = new LocalChannel_A(AtoB, BtoA);
     
         
-                Runnable runnAlice = new Runnable() {
+                Runnable runn1 = new Runnable() {
                     public void run(){
                         try{
-                            C.main( ch_CS, client );
+                            Downloader.main( ch_AB, "", client );
                         } catch (Exception e){
                             e.printStackTrace();
                         }
                     }
                 };
-                threads.add( new Thread( runnAlice, "Client" ) );
+                threads.add( new Thread( runn1 ) );
         
-                Runnable runnBob = new Runnable() {
+                Runnable runn2 = new Runnable() {
                     public void run(){
                         try{
-                            S.main( ch_SC, server );
+                            Storage.main( ch_BA, server );
                         } catch (Exception e){
                             e.printStackTrace();
                         }
                     }
                 };
-                threads.add( new Thread( runnBob, "Server" ) );
+                threads.add( new Thread( runn2 ) );
         
                 return threads;
             }
@@ -93,6 +95,5 @@ public class Main {
         
             }
         }
-        
     }
 }

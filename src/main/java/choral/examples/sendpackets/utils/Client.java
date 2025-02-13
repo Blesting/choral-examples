@@ -1,16 +1,18 @@
 package choral.examples.sendpackets.utils;
-import java.lang.Object;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Client {
 
-	public Object file;
+	public List<Integer> file = new ArrayList<>();
 
-	public Object append( Object file, Object packet ){
-        return file;
+	public List<Integer> append( List<Integer> file, Integer packet ){
+        file.add(packet);
+		return file;
 	}
 
-	public Object emptyFile(){
-		return new Object();
+	public List<Integer> emptyFile(){
+		return new ArrayList<>();
 	}
 
 }

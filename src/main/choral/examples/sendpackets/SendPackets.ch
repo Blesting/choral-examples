@@ -15,9 +15,9 @@ public class SendPackets@( C, S ){
         Server@S server, 
         Client@C client 
     ) {
-        if (server.n <= server.packets(server.file)){
+        if (server.n < server.packets(server.file)){
             channel.<Stream>select(Stream@S.NEXT);
-            Object@C packet = channel.<Object>com( server.mkPacket( server.file, server.n ) );
+            Integer@C packet = channel.<Integer>com( server.mkPacket( server.file, server.n ) );
             client.file = client.append( client.file, packet );
             server.n += 1@S;
             sendPackets( channel, server, client );
