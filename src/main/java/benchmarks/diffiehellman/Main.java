@@ -16,7 +16,7 @@ import choral.runtime.Media.MessageQueue;
 
 public class Main {
     public static void main( String[] args ){
-        if( args.length < 2 )
+        if( args.length < 1 )
             throw new Error( "Must pass an argument (the number of simulations to run)" );
         int simulations = Integer.valueOf(args[0]);
         String outputDir = BenchmarkRunner.buildOutputDir( Arrays.copyOfRange(args, 1, args.length) );
@@ -58,7 +58,7 @@ public class Main {
                 LocalChannel_A ch_AB = new LocalChannel_A(AtoB, BtoA);
     
         
-                Runnable runnAlice = new Runnable() {
+                Runnable runn1 = new Runnable() {
                     public void run(){
                         try{
                             Alice.main( ch_AB, privKeyAlice, sharedPrime, sharedGenerator );
@@ -67,9 +67,9 @@ public class Main {
                         }
                     }
                 };
-                threads.add( new Thread( runnAlice, "Alice" ) );
+                threads.add( new Thread( runn1 ) );
         
-                Runnable runnBob = new Runnable() {
+                Runnable runn2 = new Runnable() {
                     public void run(){
                         try{
                             Bob.main( ch_BA, privKeyBob, sharedPrime, sharedGenerator );
@@ -78,7 +78,7 @@ public class Main {
                         }
                     }
                 };
-                threads.add( new Thread( runnBob, "Bob" ) );
+                threads.add( new Thread( runn2) );
         
                 return threads;
             }

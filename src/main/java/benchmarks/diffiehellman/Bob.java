@@ -14,12 +14,15 @@ public class Bob {
         BigInteger sharedGenerator
     ) throws java.io.IOException {
         
-        BiPair_B<BigInteger,BigInteger> result = DiffieHellman_Bob.exchangeKeys(
-            channel,
-            privKey,
-            sharedGenerator,
-            sharedPrime
-        );
+        for( int i = 0; i < 1000; i++ ){
+            BiPair_B<BigInteger,BigInteger> result = DiffieHellman_Bob.exchangeKeys(
+                channel,
+                privKey,
+                sharedGenerator,
+                sharedPrime
+            );
+        }
+        
         // System.out.println( "Bob:   " + result.right() );
     }
 }

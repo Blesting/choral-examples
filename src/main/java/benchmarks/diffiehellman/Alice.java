@@ -14,12 +14,15 @@ public class Alice {
         BigInteger sharedGenerator
     ) throws java.io.IOException {
         
-        BiPair_A<BigInteger,BigInteger> result = DiffieHellman_Alice.exchangeKeys(
-            channel,
-            privKey,
-            sharedGenerator,
-            sharedPrime
-        );
+        for( int i = 0; i < 1000; i++ ){
+            BiPair_A<BigInteger,BigInteger> result = DiffieHellman_Alice.exchangeKeys(
+                channel,
+                privKey,
+                sharedGenerator,
+                sharedPrime
+            );
+        }
+        
         // System.out.println( "Alice: " + result.left() );
     }
 }
