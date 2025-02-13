@@ -34,10 +34,10 @@ public class BenchmarkRunner {
                     }
                     long endTime = System.nanoTime();       // stop timer
                     
-                    float totalTime = (endTime - startTime) / (float)1_000_000_000;
+                    float totalTime = (endTime - startTime) / (float)1_000_000; // in ms
                     times.add(totalTime);
 
-                    // System.out.println( "total time: " + totalTime + " seconds" );
+                    // System.out.println( "total time: " + totalTime + " ms" );
                     System.out.print( "sim " + (sim+1) + " of " + simulations + " done\r" );
                     
                     
@@ -45,12 +45,10 @@ public class BenchmarkRunner {
                     e.printStackTrace();
                 }
             }
-
             System.out.println();
 
             outputStats( times, filename );
-
-            outputStats(times);
+            outputStats( times );
             
         }
 
@@ -59,7 +57,7 @@ public class BenchmarkRunner {
                 Files.createDirectories(Paths.get(outputDir));      // create output dir
                 FileWriter writer = new FileWriter( filename );     // create output file
                 for(Float time : times) {
-                    writer.write( time + System.lineSeparator() );  // write output
+                    writer.write( printFloat( time ) + System.lineSeparator() );  // write output
                 }
                 writer.close();
             } catch( IOException e ){
@@ -69,10 +67,10 @@ public class BenchmarkRunner {
 
         private void outputStats( List<Float> times ){
             Collections.sort(times);
-            System.out.println( "fastest: " + times.get(0) );
-            System.out.println( "slowest: " + times.get(times.size()-1) );
-            System.out.println( "average: " + average(times) );
-            System.out.println( "median: " + times.get(times.size()/2) );
+            System.out.println( "fastest: " + printFloat( times.get(0) ) );
+            System.out.println( "slowest: " + printFloat( times.get(times.size()-1) ) );
+            System.out.println( "average: " + printFloat( average(times) ) );
+            System.out.println( "median: " + printFloat( times.get(times.size()/2) ) );
         }
 
         private static Float average( List<Float> list ){
@@ -81,6 +79,10 @@ public class BenchmarkRunner {
                 sum += elem;
     
             return sum/list.size();
+        }
+
+        private String printFloat( Float value ){
+            return String.format( "%.4f", value );
         }
 
         public static String buildOutputDir( String[] dirs ){
