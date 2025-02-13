@@ -20,7 +20,6 @@ public class Main {
         int filesize = Integer.valueOf(args[0]);
         int simulations = Integer.valueOf(args[1]);
         String outputDir = BenchmarkRunner.buildOutputDir( Arrays.copyOfRange(args, 2, args.length) );
-        System.out.println( outputDir );
         
         MainHelper helper = new MainHelper( outputDir, filesize );
         helper.main( simulations );
@@ -38,7 +37,7 @@ public class Main {
 
         public void main( int simulations ){
 
-            BenchmarkRunner bmr = new BenchmarkRunner( new CT(), outputDir, "output_" + simulations + ".txt" );
+            BenchmarkRunner bmr = new BenchmarkRunner( new CT(), outputDir, "output_" + filesize + "_" + simulations + ".txt" );
             bmr.run(simulations);
             
         }

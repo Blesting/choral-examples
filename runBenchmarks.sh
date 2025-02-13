@@ -1,10 +1,14 @@
 echo ""
-echo "== DownloadFile =="
-mvn exec:java -Dexec.mainClass="benchmarks.downloadfile.Main" -Dexec.args="1000 50 target benchmarks downloadfile"
+echo "== VitalsStreaming =="
+mvn exec:java -Dexec.mainClass="benchmarks.vitalsstreaming.Main" -Dexec.args="3000 50 target benchmarks vitalsstreaming"
 
 echo ""
 echo "== SendPackets =="
-mvn exec:java -Dexec.mainClass="benchmarks.sendpackets.Main" -Dexec.args="1000 50 target benchmarks sendpackets"
+mvn exec:java -Dexec.mainClass="benchmarks.sendpackets.Main" -Dexec.args="3000 50 target benchmarks sendpackets"
+
+echo ""
+echo "== DownloadFile =="
+mvn exec:java -Dexec.mainClass="benchmarks.downloadfile.Main" -Dexec.args="400 50 target benchmarks downloadfile"
 
 echo ""
 echo "== DiffieHellman =="
