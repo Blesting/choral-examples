@@ -1,9 +1,7 @@
 package choral.examples.ssowithretry;
 
 import choral.channels.SymChannel;
-import choral.examples.ssowithretry.utils.Client;
-import choral.examples.ssowithretry.utils.Service;
-import choral.examples.ssowithretry.utils.Authenticator;
+import choral.examples.ssowithretry.utils.*;
 
 import choral.runtime.Serializers.KryoSerializable;
 
@@ -26,11 +24,11 @@ public class SSOWithRetry@( C, S, CAS ){
     }
 
     public void auth( Client@C client, Service@S service, Authenticator@CAS authenticator ) {
-        Object@CAS x = ch_CASC.<Object>com( client.creds() );
-        if( true@CAS ){
+        Creds@CAS x = ch_CASC.<Creds>com( client.creds() );
+        if( authenticator.valid(x) ){
             ch_CASC.< Validity >select( Validity@CAS.TOKEN );
             ch_SCAS.< Validity >select( Validity@CAS.TOKEN );
-            Object@C t = ch_CS.<Object>com( service.newToken() );
+            Token@C t = ch_CS.<Token>com( service.newToken() );
         }
         else{
             ch_CASC.< Validity >select( Validity@CAS.INVALID );
