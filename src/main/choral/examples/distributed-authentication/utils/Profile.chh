@@ -1,4 +1,4 @@
-package choral.examples.DistAuthUtils;
+package choral.examples.distributedauthentication.utils;
 
 public class Profile@A {
 
