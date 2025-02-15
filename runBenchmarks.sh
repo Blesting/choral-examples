@@ -1,4 +1,8 @@
 echo ""
+echo "== SSOWithRetry =="
+mvn exec:java -Dexec.mainClass="benchmarks.ssowithretry.Main" -Dexec.args="500 target benchmarks ssowithretry"
+
+echo ""
 echo "== Karatsuba =="
 mvn exec:java -Dexec.mainClass="benchmarks.karatsuba.Main" -Dexec.args="500 target benchmarks karatsuba"
 
