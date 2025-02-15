@@ -1,4 +1,8 @@
 echo ""
+echo "== Karatsuba =="
+mvn exec:java -Dexec.mainClass="benchmarks.karatsuba.Main" -Dexec.args="500 target benchmarks karatsuba"
+
+echo ""
 echo "== VitalsStreaming =="
 mvn exec:java -Dexec.mainClass="benchmarks.vitalsstreaming.Main" -Dexec.args="3000 50 target benchmarks vitalsstreaming"
 
