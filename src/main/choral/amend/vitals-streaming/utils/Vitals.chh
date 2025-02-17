@@ -1,4 +1,4 @@
-package choral.amend.VitalsStreamingUtils;
+package choral.amend.vitalsstreaming.utils;
 
 public class Vitals@A {
 
