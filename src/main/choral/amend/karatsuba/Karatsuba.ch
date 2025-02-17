@@ -23,7 +23,7 @@ public class Karatsuba@( A, B, C ) {
 			Long@A h1 = n1 / splitter; Long@A l1 = n1 % splitter;
 			Long@A h2 = n2 / splitter; Long@A l2 = n2 % splitter;
 			Long@A z0 = Karatsuba@( B, C, A )
-				.multiply( ch_AB.< Long >com( l1 ), l2, ch_BC, ch_CA, ch_AB );
+				.multiply( l1, l2, ch_BC, ch_CA, ch_AB );
 
 			Long@A z2 = Karatsuba@( C, A, B )
 				.multiply( h1, h2, ch_CA, ch_AB, ch_BC );
