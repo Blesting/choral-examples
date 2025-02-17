@@ -1,4 +1,4 @@
-package choral.amend.VitalsStreaming;
+package choral.amend.vitalsstreaming;
 
 import choral.channels.SymChannel;
 import java.util.function.Consumer;
