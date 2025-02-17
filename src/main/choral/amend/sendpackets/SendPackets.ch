@@ -17,7 +17,7 @@ public class SendPackets@( C, S ){
     ) {
         if (server.n <= server.packets(server.file)){
             
-            Object@C packet = server.mkPacket( server.file, server.n );
+            Integer@C packet = server.mkPacket( server.file, server.n );
             client.file = client.append( client.file, packet );
             server.n += 1@S;
             sendPackets( channel, server, client );

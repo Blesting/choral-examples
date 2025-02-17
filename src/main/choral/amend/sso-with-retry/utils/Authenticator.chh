@@ -1,8 +1,6 @@
 package choral.amend.ssowithretry.utils;
 
-import java.lang.Object;
-
 public class Authenticator@A {
-    public boolean@A valid( Object@A x ){
+    public boolean@A valid( Creds@A x ){
     }
 }

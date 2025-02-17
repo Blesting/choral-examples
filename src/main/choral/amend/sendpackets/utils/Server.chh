@@ -1,20 +1,23 @@
 package choral.amend.sendpackets.utils;
 
-import java.lang.Object;
+import java.util.List;
 
 public class Server@A {
 
-	public Object@A file;
+	public List@A<Integer> file;
 	public int@A n;
 
-	public int@A packets( Object@A file ){
+	public Server(){}
+	public Server( List@A<Integer> file ){
 	}
 
-	public Object@A mkPacket( Object@A file, int@A n ){
+	public int@A packets( List@A<Integer> file ){
 	}
 
-	public Object@A readFile( String@A filename ){
-		
+	public Integer@A mkPacket( List@A<Integer> file, int@A n ){
+	}
+
+	public List@A<Integer> readFile( String@A filename ){
 	}
 
 }

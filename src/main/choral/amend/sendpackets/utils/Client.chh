@@ -1,15 +1,15 @@
 package choral.amend.sendpackets.utils;
 
-import java.lang.Object;
+import java.util.List;
 
 public class Client@A {
 
-	public Object@A file;
+	public List@A<Integer> file;
 
-	public Object@A append( Object@A file, Object@A packet ){
+	public List@A<Integer> append( List@A<Integer> file, Integer@A packet ){
 	}
 
-	public Object@A emptyFile(){
+	public List@A<Integer> emptyFile(){
 	}
 
 }
