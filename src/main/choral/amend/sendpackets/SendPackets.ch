@@ -15,7 +15,7 @@ public class SendPackets@( C, S ){
         Server@S server, 
         Client@C client 
     ) {
-        if (server.n <= server.packets(server.file)){
+        if (server.n < server.packets(server.file)){
             
             Integer@C packet = server.mkPacket( server.file, server.n );
             client.file = client.append( client.file, packet );
