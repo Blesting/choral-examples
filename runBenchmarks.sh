@@ -1,4 +1,12 @@
 echo ""
+echo "== SplitAndCombine =="
+mvn exec:java -Dexec.mainClass="benchmarks.splitandcombine.Main" -Dexec.args="100 target benchmarks splitandcombine"
+
+echo ""
+echo "== Quicksort =="
+mvn exec:java -Dexec.mainClass="benchmarks.quicksort.Main" -Dexec.args="100 100 target benchmarks quicksort"
+
+echo ""
 echo "== SSOWithRetry =="
 mvn exec:java -Dexec.mainClass="benchmarks.ssowithretry.Main" -Dexec.args="500 target benchmarks ssowithretry"
 
@@ -25,7 +33,3 @@ mvn exec:java -Dexec.mainClass="benchmarks.diffiehellman.Main" -Dexec.args="50 t
 echo ""
 echo "== Mergesort =="
 mvn exec:java -Dexec.mainClass="benchmarks.mergesort.Main" -Dexec.args="100 50 target benchmarks mergesort"
-
-echo ""
-echo "== Quicksort =="
-mvn exec:java -Dexec.mainClass="benchmarks.quicksort.Main" -Dexec.args="100 100 target benchmarks quicksort"
