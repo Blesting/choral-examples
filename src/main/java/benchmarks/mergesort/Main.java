@@ -1,15 +1,11 @@
 package benchmarks.mergesort;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
 import benchmarks.BenchmarkRunner;
-import benchmarks.IterationInitializer;
-import choral.runtime.LocalChannel.LocalChannel_A;
-import choral.runtime.LocalChannel.LocalChannel_B;
-import choral.runtime.Media.MessageQueue;
+
+import benchmarks.mergesort.utils.CT;
+import benchmarks.mergesort.amend.utils.CT_amend;
 
 public class Main {
     public static void main( String[] args ){
@@ -38,79 +34,13 @@ public class Main {
         }
 
         public void main( int simulations ){
+            String filename = "output_" + inputLength + "_" + simulations + ".txt";
 
-            BenchmarkRunner bmr = new BenchmarkRunner( new CT(), outputDir, "output_" + inputLength + "_" + simulations + ".txt" );
+            BenchmarkRunner bmr = new BenchmarkRunner( new CT( inputLength ), outputDir, filename );
+            bmr.run(simulations);
+            bmr = new BenchmarkRunner( new CT_amend( inputLength ), outputDir + "amend/", filename );
             bmr.run(simulations);
             
-        }
-
-        public class CT implements IterationInitializer{
-            
-            public CT(){}
-            
-            public List<Thread> initialize(){
-                List< Integer > inputList = createList();
-                List< Thread > threads = new ArrayList<>();
-    
-                MessageQueue AtoB = new MessageQueue();
-                MessageQueue BtoA = new MessageQueue();
-                MessageQueue AtoC = new MessageQueue();
-                MessageQueue CtoA = new MessageQueue();
-                MessageQueue BtoC = new MessageQueue();
-                MessageQueue CtoB = new MessageQueue();
-                LocalChannel_A ch_BC = new LocalChannel_A(BtoC, CtoB);
-                LocalChannel_B ch_BA = new LocalChannel_B(BtoA, AtoB);
-                LocalChannel_A ch_CA = new LocalChannel_A(CtoA, AtoC);
-                LocalChannel_B ch_CB = new LocalChannel_B(CtoB, BtoC);
-                LocalChannel_A ch_AB = new LocalChannel_A(AtoB, BtoA);
-                LocalChannel_B ch_AC = new LocalChannel_B(AtoC, CtoA);
-    
-        
-                Runnable runnB = new Runnable() {
-                    public void run(){
-                        try{
-                            B.main( ch_BC, ch_BA );
-                        } catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                threads.add( new Thread( runnB, "B" ) );
-        
-                Runnable runnC = new Runnable() {
-                    public void run(){
-                        try{
-                            C.main( ch_CA, ch_CB );
-                        } catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                threads.add( new Thread( runnC, "C" ) );
-        
-                Runnable runnA = new Runnable() {
-                    public void run(){
-                        try{
-                            A.main( inputList, ch_AB, ch_AC );
-                        } catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                threads.add( new Thread( runnA, "A" ) );
-        
-                return threads;
-            }
-    
-            private List<Integer> createList(){
-                List<Integer> input = new ArrayList<>();
-                Random rd = new Random();
-                for( int i = 0; i < inputLength; i++ ){
-                    input.add(rd.nextInt());
-                }
-                return input;
-        
-            }
         }
     }
 }

@@ -1,0 +1,20 @@
+package benchmarks.ssowithretry.amend;
+
+import choral.runtime.LocalChannel.LocalChannel_A;
+import choral.runtime.LocalChannel.LocalChannel_B;
+import choral.amend.ssowithretry.SSOWithRetry_CAS;
+import choral.amend.ssowithretry.utils.Authenticator;
+
+
+
+public class CAS {
+    public static void main( 
+        Authenticator authenticator,
+        LocalChannel_B channel_S,
+        LocalChannel_A channel_C
+     ) throws java.io.IOException {
+        
+        SSOWithRetry_CAS obj = new SSOWithRetry_CAS( channel_S, channel_C );
+        obj.auth( authenticator );
+    }
+}
