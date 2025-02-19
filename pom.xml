@@ -55,6 +55,23 @@
                     update the id and the last argument given to the choral executable.
                     -->
                     <execution>
+                        <id>choral-epp-consumeitems</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>choral</executable>
+                            <arguments>
+                                <argument>epp</argument>
+                                <argument>--sources=${project.basedir}/src/main/choral/examples</argument>
+                                <argument>--headers=${project.basedir}/src/main/choral</argument>
+                                <argument>--target=${project.build.directory}/generated-sources/choral</argument>
+                                <argument>ConsumeItems</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>choral-epp-distauth</id>
                         <phase>generate-sources</phase>
                         <goals>
