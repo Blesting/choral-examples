@@ -3,7 +3,7 @@ package benchmarks.diffiehellman;
 import java.util.Arrays;
 
 import benchmarks.BenchmarkRunner;
-
+import benchmarks.diffiehellman.amend.utils.CT_amend;
 import benchmarks.diffiehellman.utils.CT;
 
 public class Main {
@@ -29,6 +29,8 @@ public class Main {
             String filename = "output_" + simulations + ".txt";
 
             BenchmarkRunner bmr = new BenchmarkRunner( new CT(), outputDir, filename );
+            bmr.run(simulations);
+            bmr = new BenchmarkRunner( new CT_amend(), outputDir + "amend/", filename );
             bmr.run(simulations);
             
         }

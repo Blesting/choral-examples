@@ -1,4 +1,12 @@
 echo ""
+echo "== amend DiffieHellman =="
+choral amend -s src/main/choral/amend/ -l src/main/choral/ -t target/generated-sources/choral/ --epp DiffieHellman
+
+echo ""
+echo "== amend DownloadFile =="
+choral amend -s src/main/choral/amend/ -l src/main/choral/ -t target/generated-sources/choral/ --epp DownloadFile
+
+echo ""
 echo "== amend VitalsStreaming =="
 choral amend -s src/main/choral/amend/vitals-streaming -l src/main/choral/ -t target/generated-sources/choral/ --epp VitalsStreaming
 
@@ -13,14 +21,6 @@ choral amend -s src/main/choral/amend/split-and-combine -l src/main/choral/ -t t
 echo ""
 echo "== amend SSOWithRetry =="
 choral amend -s src/main/choral/amend/sso-with-retry -l src/main/choral/ -t target/generated-sources/choral/ --epp SSOWithRetry
-
-echo ""
-echo "== amend DiffieHellman =="
-choral amend -s src/main/choral/amend/diffie-hellman/ -l src/main/choral/amend/ -t target/generated-sources/choral/ --epp DiffieHellman
-
-echo ""
-echo "== amend DownloadFile =="
-choral amend -s src/main/choral/amend/download-file/ -l src/main/choral/ -t target/generated-sources/choral/ --epp DownloadFile
 
 echo ""
 echo "== amend Quicksort =="
