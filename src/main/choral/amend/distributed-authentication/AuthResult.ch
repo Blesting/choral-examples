@@ -1,7 +1,7 @@
-package choral.amend.AuthResult;
+package choral.amend.distributedauthentication;
 
 import choral.amend.bipair.BiPair;
-import choral.amend.DistAuthUtils.AuthToken;
+import choral.amend.distributedauthentication.utils.AuthToken;
 import java.util.Optional;
 
 public class AuthResult@( A, B ) extends

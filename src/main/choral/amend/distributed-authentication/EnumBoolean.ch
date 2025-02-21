@@ -1,4 +1,4 @@
-package choral.amend.DistAuth;
+package choral.amend.distributedauthentication;
 
 import choral.runtime.Serializers.KryoSerializable;
 

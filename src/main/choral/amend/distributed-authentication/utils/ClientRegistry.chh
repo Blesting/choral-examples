@@ -1,4 +1,4 @@
-package choral.amend.DistAuthUtils;
+package choral.amend.distributedauthentication.utils;
 
 import java.util.Optional;
 

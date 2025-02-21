@@ -1,15 +1,15 @@
-package choral.amend.DistAuth5;
+package choral.amend.distributedauthentication;
 
-import choral.amend.AuthResult.AuthResult;
-import choral.amend.DistAuthUtils.AuthToken;
-import choral.amend.DistAuthUtils.Base64_Encoder;
-import choral.amend.DistAuthUtils.ClientRegistry;
-import choral.amend.DistAuthUtils.Credentials;
+import choral.amend.distributedauthentication.AuthResult;
+import choral.amend.distributedauthentication.utils.AuthToken;
+import choral.amend.distributedauthentication.utils.Base64_Encoder;
+import choral.amend.distributedauthentication.utils.ClientRegistry;
+import choral.amend.distributedauthentication.utils.Credentials;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import choral.runtime.TLSChannel.TLSChannel;
-import choral.amend.DistAuth.EnumBoolean;
+import choral.amend.distributedauthentication.EnumBoolean;
 
 public class DistAuth5@( Client, Service, S1, S2, IP ){
 	private TLSChannel@( Client, IP )< Object > ch_Client_IP;
