@@ -1,4 +1,12 @@
 echo ""
+echo "== DownloadFile =="
+mvn exec:java -Dexec.mainClass="benchmarks.downloadfile.Main" -Dexec.args="400 50 target benchmarks downloadfile"
+
+echo ""
+echo "== DiffieHellman =="
+mvn exec:java -Dexec.mainClass="benchmarks.diffiehellman.Main" -Dexec.args="500 target benchmarks diffiehellman"
+
+echo ""
 echo "== ConsumeItems =="
 mvn exec:java -Dexec.mainClass="benchmarks.consumeitems.Main" -Dexec.args="3000 1000 target benchmarks consumeitems"
 
@@ -25,14 +33,6 @@ mvn exec:java -Dexec.mainClass="benchmarks.vitalsstreaming.Main" -Dexec.args="30
 echo ""
 echo "== SendPackets =="
 mvn exec:java -Dexec.mainClass="benchmarks.sendpackets.Main" -Dexec.args="3000 500 target benchmarks sendpackets"
-
-echo ""
-echo "== DownloadFile =="
-mvn exec:java -Dexec.mainClass="benchmarks.downloadfile.Main" -Dexec.args="400 500 target benchmarks downloadfile"
-
-echo ""
-echo "== DiffieHellman =="
-mvn exec:java -Dexec.mainClass="benchmarks.diffiehellman.Main" -Dexec.args="500 target benchmarks diffiehellman"
 
 echo ""
 echo "== Mergesort =="

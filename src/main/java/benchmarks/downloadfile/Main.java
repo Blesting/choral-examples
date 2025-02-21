@@ -3,7 +3,7 @@ package benchmarks.downloadfile;
 import java.util.Arrays;
 
 import benchmarks.BenchmarkRunner;
-
+import benchmarks.downloadfile.amend.utils.CT_amend;
 import benchmarks.downloadfile.utils.CT;
 
 public class Main {
@@ -32,6 +32,8 @@ public class Main {
             String filename = "output_" + filesize + "_" + simulations + ".txt";
 
             BenchmarkRunner bmr = new BenchmarkRunner( new CT( filesize ), outputDir, filename );
+            bmr.run(simulations);
+            bmr = new BenchmarkRunner( new CT_amend( filesize ), outputDir + "amend/", filename );
             bmr.run(simulations);
             
         }
