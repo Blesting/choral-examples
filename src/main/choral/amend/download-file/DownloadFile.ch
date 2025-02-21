@@ -10,10 +10,10 @@ public class DownloadFile@( Downloader, Storage ){
 
     public static Object@Downloader downloadFile( 
         SymChannel@( Downloader, Storage )<Object> channel, 
-        String@Downloader filename_D 
+        String@Downloader filename_D,
+        Client@Downloader client,
+        Server@Storage server
     ){
-        Client@Downloader client = new Client@Downloader();
-        Server@Storage server = new Server@Storage();
 
         String@Storage filename_S = filename_D;
         server.file = server.readFile(filename_S);
