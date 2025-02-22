@@ -1,4 +1,8 @@
 echo ""
+echo "== DistAuth10 =="
+mvn exec:java -Dexec.mainClass="benchmarks.distributedauthentication.distauth10.Main" -Dexec.args="1000 target benchmarks distributedauthentication DistAuth10"
+
+echo ""
 echo "== DownloadFile =="
 mvn exec:java -Dexec.mainClass="benchmarks.downloadfile.Main" -Dexec.args="400 50 target benchmarks downloadfile"
 

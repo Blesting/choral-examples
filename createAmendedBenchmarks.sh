@@ -1,4 +1,8 @@
 echo ""
+echo "== amend DistAuth10 =="
+choral amend -s src/main/choral/amend/ -l src/main/choral/ -t target/generated-sources/choral/ --epp DistAuth10
+
+echo ""
 echo "== amend DiffieHellman =="
 choral amend -s src/main/choral/amend/ -l src/main/choral/ -t target/generated-sources/choral/ --epp DiffieHellman
 

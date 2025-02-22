@@ -1,4 +1,4 @@
-package choral.examples.distributedauthentication.utils;
+package choral.amend.distributedauthentication.utils;
 
 public class AuthToken {
 
