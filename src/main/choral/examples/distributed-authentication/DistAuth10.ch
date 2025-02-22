@@ -8,30 +8,30 @@ import choral.examples.distributedauthentication.utils.Credentials;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import choral.runtime.TLSChannel.TLSChannel;
+import choral.channels.SymChannel;
 import choral.examples.distributedauthentication.EnumBoolean;
 
 public class DistAuth10@( Client, Service, S1, S2, S3, S4, S5, S6, S7, IP ){
-	private TLSChannel@( Client, IP )< Object > ch_Client_IP;
-	private TLSChannel@( Service, IP )< Object > ch_Service_IP;
-	private TLSChannel@( S1, IP )< Object > ch_s1;
-	private TLSChannel@( S2, IP )< Object > ch_s2;
-	private TLSChannel@( S3, IP )< Object > ch_s3;
-	private TLSChannel@( S4, IP )< Object > ch_s4;
-	private TLSChannel@( S5, IP )< Object > ch_s5;
-	private TLSChannel@( S6, IP )< Object > ch_s6;
-	private TLSChannel@( S7, IP )< Object > ch_s7;
+	private SymChannel@( Client, IP )< Object > ch_Client_IP;
+	private SymChannel@( Service, IP )< Object > ch_Service_IP;
+	private SymChannel@( S1, IP )< Object > ch_s1;
+	private SymChannel@( S2, IP )< Object > ch_s2;
+	private SymChannel@( S3, IP )< Object > ch_s3;
+	private SymChannel@( S4, IP )< Object > ch_s4;
+	private SymChannel@( S5, IP )< Object > ch_s5;
+	private SymChannel@( S6, IP )< Object > ch_s6;
+	private SymChannel@( S7, IP )< Object > ch_s7;
 
 	public DistAuth10(
-		TLSChannel@( Client, IP )< Object > ch_Client_IP,
-		TLSChannel@( Service, IP )< Object > ch_Service_IP,
-		TLSChannel@( S1, IP )< Object > ch_s1,
-		TLSChannel@( S2, IP )< Object > ch_s2,
-		TLSChannel@( S3, IP )< Object > ch_s3,
-		TLSChannel@( S4, IP )< Object > ch_s4,
-		TLSChannel@( S5, IP )< Object > ch_s5,
-		TLSChannel@( S6, IP )< Object > ch_s6,
-		TLSChannel@( S7, IP )< Object > ch_s7
+		SymChannel@( Client, IP )< Object > ch_Client_IP,
+		SymChannel@( Service, IP )< Object > ch_Service_IP,
+		SymChannel@( S1, IP )< Object > ch_s1,
+		SymChannel@( S2, IP )< Object > ch_s2,
+		SymChannel@( S3, IP )< Object > ch_s3,
+		SymChannel@( S4, IP )< Object > ch_s4,
+		SymChannel@( S5, IP )< Object > ch_s5,
+		SymChannel@( S6, IP )< Object > ch_s6,
+		SymChannel@( S7, IP )< Object > ch_s7
 	){
 		this.ch_Client_IP = ch_Client_IP;
 		this.ch_Service_IP = ch_Service_IP;

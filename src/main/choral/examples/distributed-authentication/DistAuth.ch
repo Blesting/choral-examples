@@ -9,15 +9,15 @@ import choral.examples.distributedauthentication.utils.Credentials;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import choral.runtime.TLSChannel.TLSChannel;
+import choral.channels.SymChannel;
 
 public class DistAuth@( Client, Service, IP ){
-	private TLSChannel@( Client, IP )< Object > ch_Client_IP;
-	private TLSChannel@( Service, IP )< Object > ch_Service_IP;
+	private SymChannel@( Client, IP )< Object > ch_Client_IP;
+	private SymChannel@( Service, IP )< Object > ch_Service_IP;
 
 	public DistAuth(
-		TLSChannel@( Client, IP )< Object > ch_Client_IP,
-		TLSChannel@( Service, IP )< Object > ch_Service_IP
+		SymChannel@( Client, IP )< Object > ch_Client_IP,
+		SymChannel@( Service, IP )< Object > ch_Service_IP
 	){
 		this.ch_Client_IP = ch_Client_IP;
 		this.ch_Service_IP = ch_Service_IP;
