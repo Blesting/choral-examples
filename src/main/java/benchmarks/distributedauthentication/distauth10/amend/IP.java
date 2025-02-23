@@ -1,6 +1,7 @@
 package benchmarks.distributedauthentication.distauth10.amend;
 
 import choral.runtime.LocalChannel.LocalChannel_B;
+import benchmarks.distributedauthentication.distauth10.Main;
 import choral.amend.distributedauthentication.DistAuth10_IP;
 
 
@@ -18,18 +19,19 @@ public class IP {
         LocalChannel_B channel_s7
      ) throws java.io.IOException {
 
-        DistAuth10_IP ip = new DistAuth10_IP(
-            channel_Client, 
-            channel_Service,
-            channel_s1,
-            channel_s2,
-            channel_s3,
-            channel_s4,
-            channel_s5,
-            channel_s6,
-            channel_s7);
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            DistAuth10_IP ip = new DistAuth10_IP(
+                channel_Client, 
+                channel_Service,
+                channel_s1,
+                channel_s2,
+                channel_s3,
+                channel_s4,
+                channel_s5,
+                channel_s6,
+                channel_s7);
 
-        ip.authenticate();
-
+            ip.authenticate();
+        }
     }
 }

@@ -8,6 +8,9 @@ import benchmarks.karatsuba.utils.CT;
 import benchmarks.karatsuba.amend.utils.CT_amend;
 
 public class Main {
+
+    public static final int ITERATIONS_PER_SIMULATION = 20;
+    
     public static void main( String[] args ){
         if( args.length < 1 )
             throw new Error( "Must pass an argument (the number of simulations to run)" );

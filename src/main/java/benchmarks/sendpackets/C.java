@@ -11,6 +11,8 @@ public class C {
         Client client
     ) throws java.io.IOException {
         
-        SendPackets_C.sendPackets( channel, client );
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            SendPackets_C.sendPackets( channel, new Client() );
+        }
     }
 }

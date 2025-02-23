@@ -2,6 +2,10 @@ package benchmarks.sendpackets.amend;
 
 import choral.runtime.LocalChannel.LocalChannel_B;
 import choral.amend.sendpackets.utils.Server;
+
+import java.util.List;
+
+import benchmarks.sendpackets.Main;
 import choral.amend.sendpackets.SendPackets_S;
 
 public class S {
@@ -11,6 +15,9 @@ public class S {
         Server server
     ) throws java.io.IOException {
         
-        SendPackets_S.sendPackets( channel, server );
+        List< Integer > list = server.file;
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            SendPackets_S.sendPackets( channel, new Server( list ) );
+        }
     }
 }

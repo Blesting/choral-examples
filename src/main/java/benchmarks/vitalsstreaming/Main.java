@@ -8,6 +8,9 @@ import benchmarks.vitalsstreaming.utils.CT;
 import benchmarks.vitalsstreaming.amend.utils.CT_amend;
 
 public class Main {
+
+    public static final int ITERATIONS_PER_SIMULATION = 80;
+    
     public static void main( String[] args ){
         if( args.length < 2 )
             throw new Error( "Must pass two arguments (How much data to stream and the number of simulations to run)" );

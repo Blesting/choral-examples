@@ -4,6 +4,8 @@ import choral.runtime.LocalChannel.LocalChannel_B;
 import choral.examples.ConsumeItems.ConsumeItems_B;
 import java.util.function.Consumer;
 
+import benchmarks.consumeitems.utils.Cons;
+
 
 public class B {
 
@@ -12,6 +14,8 @@ public class B {
         Consumer < Integer > consumer
     ) throws java.io.IOException {
         
-        ConsumeItems_B.consumeItems( channel, consumer );
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            ConsumeItems_B.consumeItems( channel, new Cons() );
+        }
     }
 }

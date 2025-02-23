@@ -10,6 +10,10 @@ public class Sensor {
         this.stack = stack;
     }
 
+    public Stack<VitalsMsg> stack(){
+        return stack;
+    }
+
 	public Boolean isOn(){
         return !stack.empty();
     }

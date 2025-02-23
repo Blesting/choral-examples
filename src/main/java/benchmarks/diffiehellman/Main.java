@@ -7,6 +7,9 @@ import benchmarks.diffiehellman.amend.utils.CT_amend;
 import benchmarks.diffiehellman.utils.CT;
 
 public class Main {
+
+    public static final int ITERATIONS_PER_SIMULATION = 1200;
+    
     public static void main( String[] args ){
         if( args.length < 1 )
             throw new Error( "Must pass an argument (the number of simulations to run)" );

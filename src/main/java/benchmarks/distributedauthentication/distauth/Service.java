@@ -10,9 +10,10 @@ public class Service {
         LocalChannel_A channel_IP
      ) throws java.io.IOException {
         
-        DistAuth_Service service = new DistAuth_Service( channel_IP );
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            DistAuth_Service service = new DistAuth_Service( channel_IP );
 
-        service.authenticate();
-        
+            service.authenticate();
+        }
     }
 }

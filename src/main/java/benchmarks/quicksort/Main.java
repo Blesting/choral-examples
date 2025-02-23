@@ -8,6 +8,9 @@ import benchmarks.quicksort.utils.CT;
 import benchmarks.quicksort.amend.utils.CT_amend;
 
 public class Main {
+
+    public static final int ITERATIONS_PER_SIMULATION = 1;
+    
     public static void main( String[] args ){
         if( args.length < 2 )
             throw new Error( "Must pass two arguments (length of the list to sort and the number of simulations to run)" );

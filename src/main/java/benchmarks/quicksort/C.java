@@ -12,8 +12,11 @@ public class C {
         LocalChannel_B channel_B
      ) throws java.io.IOException {
 
-        Quicksort_C mergesort = new Quicksort_C(channel_B, channel_A);
-        mergesort.sort();
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            Quicksort_C mergesort = new Quicksort_C(channel_B, channel_A);
+            mergesort.sort();
+        }
+        
         // System.out.println("Done at C");
     }
 }

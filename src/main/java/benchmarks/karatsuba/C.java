@@ -12,6 +12,8 @@ public class C {
         LocalChannel_A channel_A
      ) throws java.io.IOException {
         
-        Karatsuba_C.multiply(channel_B, channel_A);
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            Karatsuba_C.multiply(channel_B, channel_A);
+        }
     }
 }

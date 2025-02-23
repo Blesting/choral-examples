@@ -2,6 +2,7 @@ package benchmarks.karatsuba.amend;
 
 import choral.runtime.LocalChannel.LocalChannel_A;
 import choral.runtime.LocalChannel.LocalChannel_B;
+import benchmarks.karatsuba.Main;
 import choral.amend.Karatsuba.Karatsuba_B;
 
 
@@ -12,6 +13,8 @@ public class B {
         LocalChannel_A channel_C
      ) throws java.io.IOException {
         
-        Karatsuba_B.multiply(channel_A, channel_C);
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            Karatsuba_B.multiply(channel_A, channel_C);
+        }
     }
 }

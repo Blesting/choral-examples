@@ -11,7 +11,7 @@ public class Downloader {
         String filename,
         Client client
     ) throws java.io.IOException {
-        for( int i = 0; i < 1000; i++ ){
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
             DownloadFile_Downloader.downloadFile( channel, filename, client );
         }
     }

@@ -2,6 +2,7 @@ package benchmarks.quicksort.amend;
 
 import choral.runtime.LocalChannel.LocalChannel_A;
 import choral.runtime.LocalChannel.LocalChannel_B;
+import benchmarks.quicksort.Main;
 import choral.amend.Quicksort.Quicksort_C;
 
 
@@ -12,8 +13,11 @@ public class C {
         LocalChannel_B channel_B
      ) throws java.io.IOException {
 
-        Quicksort_C mergesort = new Quicksort_C(channel_B, channel_A);
-        mergesort.sort();
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            Quicksort_C mergesort = new Quicksort_C(channel_B, channel_A);
+            mergesort.sort();
+        }
+        
         // System.out.println("Done at C");
     }
 }

@@ -11,9 +11,10 @@ public class IP {
         LocalChannel_B channel_Service
      ) throws java.io.IOException {
 
-        DistAuth_IP ip = new DistAuth_IP(channel_Client, channel_Service);
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            DistAuth_IP ip = new DistAuth_IP(channel_Client, channel_Service);
 
-        ip.authenticate();
-
+            ip.authenticate();
+        }
     }
 }

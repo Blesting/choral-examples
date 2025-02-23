@@ -22,7 +22,7 @@ public class CT implements IterationInitializer {
             
     public  List<Thread> initialize(){
         List< Thread > threads = new ArrayList<>();
-        Iterator< Integer > it = new It( createList() );
+        It it = new It( createList() );
         Consumer< Integer > cons = new Cons();
 
         MessageQueue AtoB = new MessageQueue();

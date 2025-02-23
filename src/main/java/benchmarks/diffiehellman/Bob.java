@@ -14,7 +14,7 @@ public class Bob {
         BigInteger sharedGenerator
     ) throws java.io.IOException {
         
-        for( int i = 0; i < 1000; i++ ){
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
             BiPair_B<BigInteger,BigInteger> result = DiffieHellman_Bob.exchangeKeys(
                 channel,
                 privKey,

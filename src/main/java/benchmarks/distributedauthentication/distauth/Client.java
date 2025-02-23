@@ -13,11 +13,10 @@ public class Client {
         Credentials credentails
     ) throws java.io.IOException {
 
-        DistAuth_Client client = new DistAuth_Client( channel_IP );
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            DistAuth_Client client = new DistAuth_Client( channel_IP );
 
-        client.authenticate( credentails );
-
-        
+            client.authenticate( credentails );
+        }
     }
-
 }

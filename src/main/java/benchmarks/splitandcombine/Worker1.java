@@ -10,6 +10,8 @@ public class Worker1 {
         LocalChannel_B channel_Main
     ) throws java.io.IOException {
 
-        SplitAndCombine_Worker1.splitAndCombine( channel_Main );
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            SplitAndCombine_Worker1.splitAndCombine( channel_Main );
+        }
     }
 }

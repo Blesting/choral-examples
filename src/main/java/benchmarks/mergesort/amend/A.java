@@ -2,6 +2,7 @@ package benchmarks.mergesort.amend;
 
 import java.util.List;
 
+import benchmarks.mergesort.Main;
 import choral.runtime.LocalChannel.LocalChannel_A;
 import choral.runtime.LocalChannel.LocalChannel_B;
 import choral.amend.Mergesort.Mergesort_A;
@@ -16,10 +17,11 @@ public class A {
         LocalChannel_B channel_C 
     ) throws java.io.IOException {
 
-        Mergesort_A mergesort = new Mergesort_A(channel_B, channel_C);
-        List<Integer> sortedList = mergesort.sort(input);
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            Mergesort_A mergesort = new Mergesort_A(channel_B, channel_C);
+            List<Integer> sortedList = mergesort.sort(input);
+        }
         
         // System.out.println("result from A: " + sortedList);
     }
-
 }

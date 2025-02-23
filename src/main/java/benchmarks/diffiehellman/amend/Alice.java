@@ -5,6 +5,8 @@ import choral.amend.diffiehellman.DiffieHellman_Alice;
 import choral.amend.bipair.BiPair_A;
 import java.math.BigInteger;
 
+import benchmarks.diffiehellman.Main;
+
 public class Alice {
 
     public static void main(
@@ -14,7 +16,7 @@ public class Alice {
         BigInteger sharedGenerator
     ) throws java.io.IOException {
         
-        for( int i = 0; i < 1000; i++ ){
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
             BiPair_A<BigInteger,BigInteger> result = DiffieHellman_Alice.exchangeKeys(
                 channel,
                 privKey,

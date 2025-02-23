@@ -14,7 +14,9 @@ public class S {
         LocalChannel_A channel_CAS
      ) throws java.io.IOException {
         
-        SSOWithRetry_S obj = new SSOWithRetry_S( channel_C, channel_CAS );
-        obj.auth( service );
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            SSOWithRetry_S obj = new SSOWithRetry_S( channel_C, channel_CAS );
+            obj.auth( service );
+        }
     }
 }

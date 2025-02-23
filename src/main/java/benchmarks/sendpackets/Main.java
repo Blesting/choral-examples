@@ -8,6 +8,9 @@ import benchmarks.sendpackets.utils.CT;
 import benchmarks.sendpackets.amend.utils.CT_amend;
 
 public class Main {
+
+    public static final int ITERATIONS_PER_SIMULATION = 150;
+    
     public static void main( String[] args ){
         if( args.length < 2 )
             throw new Error( "Must pass two arguments (The size of the list to send and the number of simulations to run)" );

@@ -7,6 +7,9 @@ import benchmarks.consumeitems.amend.utils.CT_amend;
 import benchmarks.consumeitems.utils.CT;
 
 public class Main {
+
+    public static final int ITERATIONS_PER_SIMULATION = 50;
+    
     public static void main( String[] args ){
         if( args.length < 2 )
             throw new Error( "Must pass two arguments (the length of the iterator and the number of simulations to run)" );
@@ -36,7 +39,7 @@ public class Main {
 
             BenchmarkRunner bmr = new BenchmarkRunner( new CT( iteratorLength ), outputDir, filename );
             bmr.run(simulations);
-            bmr = new BenchmarkRunner( new CT_amend( iteratorLength ), outputDir, filename );
+            bmr = new BenchmarkRunner( new CT_amend( iteratorLength ), outputDir + "amend/", filename );
             bmr.run(simulations);
             
         }

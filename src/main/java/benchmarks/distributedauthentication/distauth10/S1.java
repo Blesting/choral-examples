@@ -10,8 +10,10 @@ public class S1 {
         LocalChannel_A channel_IP
      ) throws java.io.IOException {
         
-        DistAuth10_S1 s1 = new DistAuth10_S1(channel_IP);
+        for( int i = 0; i < Main.ITERATIONS_PER_SIMULATION; i++ ){
+            DistAuth10_S1 s1 = new DistAuth10_S1(channel_IP);
 
-        s1.authenticate();
+            s1.authenticate();
+        }
     }
 }

@@ -7,6 +7,9 @@ import benchmarks.downloadfile.amend.utils.CT_amend;
 import benchmarks.downloadfile.utils.CT;
 
 public class Main {
+
+    public static final int ITERATIONS_PER_SIMULATION = 1000;
+
     public static void main( String[] args ){
         if( args.length < 2 )
             throw new Error( "Must pass two arguments (The size of the list to download and the number of simulations to run)" );

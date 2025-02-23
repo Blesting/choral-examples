@@ -2,19 +2,26 @@ package benchmarks.splitandcombine.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import benchmarks.IterationInitializer;
 import benchmarks.splitandcombine.*;
+import choral.examples.splitandcombine.utils.Task;
 import choral.runtime.LocalChannel.LocalChannel_A;
 import choral.runtime.LocalChannel.LocalChannel_B;
 import choral.runtime.Media.MessageQueue;
 
 public class CT implements IterationInitializer {
     
-    public CT(){}
+    int taskSize;
+
+    public CT( int taskSize ){
+        this.taskSize = taskSize;
+    }
 
     public List<Thread> initialize(){
         List< Thread > threads = new ArrayList<>();
+        Task task = new Task( createList() );
 
         MessageQueue AtoB = new MessageQueue();
         MessageQueue BtoA = new MessageQueue();
@@ -29,7 +36,7 @@ public class CT implements IterationInitializer {
         Runnable runn1 = new Runnable() {
             public void run(){
                 try{
-                    Host.main( ch_AB, ch_CA );
+                    Host.main( ch_AB, ch_CA, task );
                 } catch (Exception e){
                     e.printStackTrace();
                 }
@@ -60,6 +67,15 @@ public class CT implements IterationInitializer {
         threads.add( new Thread( runn3 ) );
 
         return threads;
+    }
+
+    private List<Integer> createList(){
+        List<Integer> input = new ArrayList<>();
+        Random rd = new Random();
+        for( int i = 0; i < taskSize; i++ ){
+            input.add(rd.nextInt());
+        }
+        return input;
     }
 
 }
