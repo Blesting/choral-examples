@@ -9,7 +9,7 @@ import benchmarks.karatsuba.amend.utils.CT_amend;
 
 public class Main {
 
-    public static final int ITERATIONS_PER_SIMULATION = 20;
+    public static final int ITERATIONS_PER_SIMULATION = 5;
     
     public static void main( String[] args ){
         if( args.length < 1 )

@@ -18,8 +18,8 @@ public class CT_amend implements IterationInitializer {
         List< Thread > threads = new ArrayList<>();
         
         Random rd = new Random();
-        Long n1 = rd.nextLong();
-        Long n2 = rd.nextLong();
+        Long n1 = Math.abs(rd.nextLong());
+        Long n2 = Math.abs(rd.nextLong());
 
         MessageQueue AtoB = new MessageQueue();
         MessageQueue BtoA = new MessageQueue();
