@@ -1,0 +1,5 @@
+package choral.examples.splitandcombine.utils;
+
+public class Result@A {
+    public Result@A combineWith( Result@A otherResult ){}
+}

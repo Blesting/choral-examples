@@ -1,7 +1,5 @@
 package choral.amend.splitandcombine.utils;
 
 public class Worker@A {
-    public static Object@A run( Object@A task ){
-        return new Object@A();
-    }
+    public static Result@A run( Task@A task ){}
 }

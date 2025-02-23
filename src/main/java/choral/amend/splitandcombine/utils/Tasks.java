@@ -1,10 +1,19 @@
 package choral.amend.splitandcombine.utils;
 
 public class Tasks {
-    public Object first(){
-        return new Object();
+
+    Task task1;
+    Task task2;
+    
+    public Tasks( Task task1, Task task2 ){
+        this.task1 = task1;
+        this.task2 = task2;
     }
-    public Object second(){
-        return new Object();
+    
+    public Task first(){
+        return task1;
+    }
+    public Task second(){
+        return task2;
     }
 }
