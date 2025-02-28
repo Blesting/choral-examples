@@ -1,13 +1,10 @@
 package benchmarks.visualizer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
 import org.jfree.chart.ChartFactory;
@@ -21,6 +18,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.graphics2d.svg.SVGGraphics2D;
 
 import benchmarks.visualizer.utils.MainWindow;
+import benchmarks.visualizer.utils.Helper;
 
 public class PlotBenchmarks {
 
@@ -42,20 +40,21 @@ public class PlotBenchmarks {
     public static void main( String[] args ){
         // First input: name of the benchmark to plot
         // Second input (optional): name of the outputfile to plot
+        Helper helper = new Helper( WARM_UP_REMOVAL, TRIM_AMOUNT );
 
         String benchmark = args[0];
 
         String benchmarkDir = TARGET_FOLDER + benchmark + "/";
 
-        String outputFile = args.length >= 2 ? args[1] : getLargestSimulationFile( benchmarkDir );
+        String outputFile = args.length >= 2 ? args[1] : helper.getLargestSimulationFile( benchmarkDir );
 
         String exampleBenckmark = benchmarkDir + outputFile;
         String amendBenchmark = benchmarkDir + "amend/" + outputFile;
 
-        List<Double> dataList_example = loadData( exampleBenckmark );
-        List<Double> dataList_amend = loadData( amendBenchmark );
+        List<Double> dataList_example = helper.loadData( exampleBenckmark );
+        List<Double> dataList_amend = helper.loadData( amendBenchmark );
 
-        double[] standardDeviations = getStandatdDeviation( dataList_example.stream()
+        double[] standardDeviations = helper.getStandatdDeviation( dataList_example.stream()
                                                                 .map( time -> time.intValue() )
                                                                 .toList(),
                                                             dataList_amend.stream()
@@ -71,56 +70,6 @@ public class PlotBenchmarks {
 
         exportToSVG(chart, benchmark);
         // displayChart(chart);
-    }
-
-    private static String getLargestSimulationFile( String dir ){
-        List< String > files = Stream.of( new File( dir ).listFiles() )
-            .filter( file -> !file.isDirectory() )
-            .map( file -> file.getName() )
-            .toList();
-        System.out.println( "files: " + files );
-        
-        String mostSimsFile = files.get(0);
-        int mostSims = getSimulationsFromFilename(mostSimsFile);
-
-        for( int i = 1; i < files.size(); i++ ){
-            String currentFile = files.get(i);
-            int currentSims = getSimulationsFromFilename(currentFile);
-            if( currentSims > mostSims ){
-                mostSimsFile = currentFile;
-                mostSims = currentSims;
-            }
-        }
-        return mostSimsFile;
-    }
-
-    private static int getSimulationsFromFilename( String filename ){
-        int lastDot = filename.lastIndexOf(".");
-        int lastUnderscore = filename.lastIndexOf("_");
-        return Integer.valueOf(filename.substring( lastUnderscore+1, lastDot ));
-    }
-
-    private static double getStandatdDeviation( List< Integer > list ){
-        double average = list.stream().reduce(0, ( a,b ) -> a+b ) / list.size();
-
-        double sum = list.stream()
-            .map( val -> (val - average) * (val - average) )
-            .reduce( 0d, ( a,b ) -> a+b );
-        double sd = Math.sqrt( sum / (double)list.size() );
-        
-        return sd;
-    }
-
-    private static double[] getStandatdDeviation( List< Integer > list_example, List< Integer > list_amend ){
-        double exampleAverage = list_example.stream().reduce(0, ( a,b ) -> a+b ) / list_example.size();
-        System.out.println( "example average: " + exampleAverage );
-
-        double amendAverage = list_amend.stream().reduce(0, ( a,b ) -> a+b ) / list_amend.size();
-        System.out.println( "amend average: " + amendAverage );
-
-
-        
-        return new double[]{getStandatdDeviation(list_example), getStandatdDeviation(list_amend)};
     }
 
     private static DefaultCategoryDataset createCategoryDataset( List<Double> dataSet ){
@@ -220,27 +169,4 @@ public class PlotBenchmarks {
         }
     }
 
-    private static List< Double > loadData( String filename ){
-        List<Double> dataList = new ArrayList<>();
-        
-        try{
-            File file = new File(filename);
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                String data = scanner.nextLine();
-                dataList.add(Double.valueOf(data));
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        dataList = dataList.subList(WARM_UP_REMOVAL, dataList.size());
-        Collections.sort( dataList);
-        
-        int trim = (int)(dataList.size()*TRIM_AMOUNT);
-        dataList = dataList.subList(trim, dataList.size()-trim);
-        System.out.println( "datalist final size: " + dataList.size() );
-
-        return dataList;
-    }
 }
