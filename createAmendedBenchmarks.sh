@@ -1,14 +1,14 @@
 echo ""
+echo "== amend DownloadFile =="
+choral amend -s src/main/choral/amend/ -l src/main/choral/ -t target/generated-sources/choral/ --epp DownloadFile
+
+echo ""
 echo "== amend DistAuth10 =="
 choral amend -s src/main/choral/amend/ -l src/main/choral/ -t target/generated-sources/choral/ --epp DistAuth10
 
 echo ""
 echo "== amend DiffieHellman =="
 choral amend -s src/main/choral/amend/ -l src/main/choral/ -t target/generated-sources/choral/ --epp DiffieHellman
-
-echo ""
-echo "== amend DownloadFile =="
-choral amend -s src/main/choral/amend/ -l src/main/choral/ -t target/generated-sources/choral/ --epp DownloadFile
 
 echo ""
 echo "== amend VitalsStreaming =="
