@@ -27,26 +27,50 @@ public class PlotBenchmarks {
     /** Remove the top and bottom n percent of elements to decrease the impact of outliers */
     public static final double TRIM_AMOUNT = 0.02;
     /** The location of the benchmarks */
-    public static final String TARGET_FOLDER = "target/benchmarks/";
+    public static final String TARGET_FOLDER = "target/u1-standard-4/benchmarks/";
     /** Whether to reduce the amount of bars to show on the graph (done by rounding runtimes to nearest 1ms, 2ms, 4ms ...) */
     public static final boolean REDUCE_STEPS = true;
     /** The maximum number of columns to allow on a graph */
     public static final int MAX_STEPS = 40;
     public static final int SVG_HEIGHT = 600;
     public static final int SVG_WIDTH = 400;
+    public static final String[] BENCHMARKS = new String[]{
+        "consumeitems", 
+        "diffiehellman", 
+        "distributedauthentication/DistAuth10", 
+        "downloadfile",
+        "karatsuba",
+        "mergesort",
+        "quicksort",
+        "sendpackets",
+        "splitandcombine",
+        "ssowithretry",
+        "vitalsstreaming"};
 
 
-    // mvn exec:java -Dexec.mainClass="benchmarks.utils.PlotBenchmarks" -Dexec.args="consumeitems"
+    // mvn exec:java -Dexec.mainClass="benchmarks.visualizer.PlotBenchmarks" -Dexec.args="consumeitems"
     public static void main( String[] args ){
         // First input: name of the benchmark to plot
         // Second input (optional): name of the outputfile to plot
         Helper helper = new Helper( WARM_UP_REMOVAL, TRIM_AMOUNT );
 
+        if( args.length < 1 ){
+            for( String benchmark : BENCHMARKS ){
+                plotBenchmark(benchmark, helper.getLargestSimulationFile( TARGET_FOLDER + benchmark + "/" ), helper);
+            }
+        } else{
+            plotBenchmark(args, helper);
+        }
+    }
+
+    private static void plotBenchmark( String[] args, Helper helper ){ 
         String benchmark = args[0];
+        String outputFile = args.length >= 2 ? args[1] : helper.getLargestSimulationFile( TARGET_FOLDER + benchmark + "/" );
+        plotBenchmark(benchmark, outputFile, helper);
+    }
 
+    private static void plotBenchmark( String benchmark, String outputFile, Helper helper ){
         String benchmarkDir = TARGET_FOLDER + benchmark + "/";
-
-        String outputFile = args.length >= 2 ? args[1] : helper.getLargestSimulationFile( benchmarkDir );
 
         String exampleBenckmark = benchmarkDir + outputFile;
         String amendBenchmark = benchmarkDir + "amend/" + outputFile;
@@ -124,8 +148,8 @@ public class PlotBenchmarks {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for( Integer i = bottom; i <= top; i += step ){
             final Integer FilterValue = i;
-            dataset.addValue( exampleTimes.stream().filter( x -> x.equals(FilterValue) ).count() , "example", i.toString()  );
-            dataset.addValue( amendTimes.stream().filter( x -> x.equals(FilterValue) ).count() , "amend", i.toString()  );
+            dataset.addValue( exampleTimes.stream().filter( x -> x.equals(FilterValue) ).count() , "manual comms", i.toString()  );
+            dataset.addValue( amendTimes.stream().filter( x -> x.equals(FilterValue) ).count() , "inferred comms", i.toString()  );
         }
 
         return dataset;
@@ -161,7 +185,10 @@ public class PlotBenchmarks {
         
         String svgElement = svg.getSVGElement();
 
-        File file = new File(benchmarkName + ".svg");
+        String[] splitName = benchmarkName.split("/");
+        String filename = splitName[splitName.length-1];
+
+        File file = new File(filename + ".svg");
         try (FileWriter writer = new FileWriter(TARGET_FOLDER + "svgs/" + file)) {
             writer.write(svgElement);
         } catch( IOException e ){
