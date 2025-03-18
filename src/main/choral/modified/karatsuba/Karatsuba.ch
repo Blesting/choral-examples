@@ -3,8 +3,6 @@ package choral.modified.Karatsuba;
 import choral.channels.SymChannel;
 import choral.modified.utils.Pair;
 
-import choral.modified.utils.Sequence;
-
 enum Choice@R { RECUR, DONE }
 
 public class Karatsuba@( A, B, C ) {
