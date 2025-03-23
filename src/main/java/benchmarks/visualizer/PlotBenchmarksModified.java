@@ -20,7 +20,7 @@ import org.jfree.graphics2d.svg.SVGGraphics2D;
 import benchmarks.visualizer.utils.MainWindow;
 import benchmarks.visualizer.utils.Helper;
 
-public class PlotBenchmarks {
+public class PlotBenchmarksModified {
 
     /** Remove the first n elements to only use datapoints captured on a "warm" system */
     public static final int WARM_UP_REMOVAL = 100;
@@ -35,20 +35,12 @@ public class PlotBenchmarks {
     public static final int SVG_HEIGHT = 600;
     public static final int SVG_WIDTH = 400;
     public static final String[] BENCHMARKS = new String[]{
-        "consumeitems", 
-        "diffiehellman", 
-        "distributedauthentication/DistAuth10", 
-        "downloadfile",
-        "karatsuba",
         "mergesort",
         "quicksort",
-        "sendpackets",
-        "splitandcombine",
-        "ssowithretry",
-        "vitalsstreaming"};
+        "karatsuba"};
 
 
-    // mvn exec:java -Dexec.mainClass="benchmarks.visualizer.PlotBenchmarks" -Dexec.args="consumeitems"
+    // mvn exec:java -Dexec.mainClass="benchmarks.visualizer.PlotBenchmarksModified"
     public static void main( String[] args ){
         // First input: name of the benchmark to plot
         // Second input (optional): name of the outputfile to plot
@@ -56,7 +48,7 @@ public class PlotBenchmarks {
 
         if( args.length < 1 ){
             for( String benchmark : BENCHMARKS ){
-                plotBenchmark(benchmark, helper.getLargestSimulationFile( TARGET_FOLDER + benchmark + "/" ), helper);
+                plotBenchmark(benchmark, helper.getLargestSimulationFile( TARGET_FOLDER + benchmark + "/modified/" ), helper);
             }
         } else{
             plotBenchmark(args, helper);
@@ -65,30 +57,36 @@ public class PlotBenchmarks {
 
     private static void plotBenchmark( String[] args, Helper helper ){ 
         String benchmark = args[0];
-        String outputFile = args.length >= 2 ? args[1] : helper.getLargestSimulationFile( TARGET_FOLDER + benchmark + "/" );
+        String outputFile = args.length >= 2 ? args[1] : helper.getLargestSimulationFile( TARGET_FOLDER + benchmark + "/modified/" );
         plotBenchmark(benchmark, outputFile, helper);
     }
 
     private static void plotBenchmark( String benchmark, String outputFile, Helper helper ){
-        String benchmarkDir = TARGET_FOLDER + benchmark + "/";
+        String benchmarkDir = TARGET_FOLDER + benchmark + "/modified/";
 
         String exampleBenckmark = benchmarkDir + outputFile;
         String amendBenchmark = benchmarkDir + "amend/" + outputFile;
+        String modifiedBenchmark = benchmarkDir + "modified/" + outputFile;
 
         List<Double> dataList_example = helper.loadData( exampleBenckmark );
         List<Double> dataList_amend = helper.loadData( amendBenchmark );
+        List<Double> dataList_modified = helper.loadData( modifiedBenchmark );
 
         double[] standardDeviations = helper.getStandatdDeviation( dataList_example.stream()
                                                                 .map( time -> time.intValue() )
                                                                 .toList(),
                                                             dataList_amend.stream()
                                                                 .map( time -> time.intValue() )
+                                                                .toList(),
+                                                            dataList_modified.stream()
+                                                                .map( time -> time.intValue() )
                                                                 .toList() );
         
-        System.out.println( "example standard deviation: \t" + standardDeviations[0] );
+        System.out.println( "baseline standard deviation: \t" + standardDeviations[0] );
         System.out.println( "amend standard deviation: \t" + standardDeviations[1] );
+        System.out.println( "modified standard deviation: \t" + standardDeviations[2] );
 
-        DefaultCategoryDataset dataset = createCategoryDataset( dataList_example, dataList_amend );
+        DefaultCategoryDataset dataset = createCategoryDataset( dataList_example, dataList_amend, dataList_modified );
 
         JFreeChart chart = createChart( dataset, benchmark );
 
@@ -114,7 +112,11 @@ public class PlotBenchmarks {
         return dataset;
     }
 
-    private static DefaultCategoryDataset createCategoryDataset( List<Double> dataSet_example, List<Double> dataSet_amend ){
+    private static DefaultCategoryDataset createCategoryDataset( 
+        List<Double> dataSet_example, 
+        List<Double> dataSet_amend,
+        List<Double> dataSet_modified
+    ){
         int step = 1;
         List< Integer > exampleTimes = dataSet_example.stream()
             .map( time -> time.intValue() )
@@ -122,8 +124,11 @@ public class PlotBenchmarks {
         List< Integer > amendTimes = dataSet_amend.stream()
             .map( time -> time.intValue() )
             .toList();
+        List< Integer > modifiedTimes = dataSet_modified.stream()
+            .map( time -> time.intValue() )
+            .toList();
         
-        List< Integer > allTimes = Stream.concat(exampleTimes.stream(), amendTimes.stream()).toList();
+        List< Integer > allTimes = Stream.concat( Stream.concat(exampleTimes.stream(), amendTimes.stream()), modifiedTimes.stream() ).toList();
         Integer bottom = Collections.min(allTimes);
         Integer top = Collections.max(allTimes);
         
@@ -137,7 +142,10 @@ public class PlotBenchmarks {
                 amendTimes = amendTimes.stream()
                     .map( time -> time % i == i/2 ? time - i/2 : time )
                     .toList();
-                allTimes = Stream.concat(exampleTimes.stream(), amendTimes.stream()).toList();
+                modifiedTimes = modifiedTimes.stream()
+                    .map( time -> time % i == i/2 ? time - i/2 : time )
+                    .toList();
+                allTimes = Stream.concat( Stream.concat(exampleTimes.stream(), amendTimes.stream()), modifiedTimes.stream() ).toList();
                 bottom = Collections.min(allTimes);
                 top = Collections.max(allTimes);
             }
@@ -148,8 +156,9 @@ public class PlotBenchmarks {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for( Integer i = bottom; i <= top; i += step ){
             final Integer FilterValue = i;
-            dataset.addValue( exampleTimes.stream().filter( x -> x.equals(FilterValue) ).count() , "manual comms", i.toString()  );
-            dataset.addValue( amendTimes.stream().filter( x -> x.equals(FilterValue) ).count() , "inferred comms", i.toString()  );
+            dataset.addValue( exampleTimes.stream().filter( x -> x.equals(FilterValue) ).count() , "Baseline", i.toString() );
+            dataset.addValue( amendTimes.stream().filter( x -> x.equals(FilterValue) ).count() , "Inferred comms", i.toString() );
+            dataset.addValue( modifiedTimes.stream().filter( x -> x.equals(FilterValue) ).count() , "Manual improvements", i.toString() );
         }
 
         return dataset;
@@ -184,12 +193,12 @@ public class PlotBenchmarks {
         chart.draw(svg, new java.awt.Rectangle(0, 0, SVG_HEIGHT, SVG_WIDTH));
         
         String svgElement = svg.getSVGElement();
-
+        
         String[] splitName = benchmarkName.split("/");
         String filename = splitName[splitName.length-1];
 
         File file = new File(filename + ".svg");
-        try (FileWriter writer = new FileWriter(TARGET_FOLDER + "svgs/" + file)) {
+        try (FileWriter writer = new FileWriter(TARGET_FOLDER + "svgs/modified/" + file)) {
             writer.write(svgElement);
         } catch( IOException e ){
             e.printStackTrace();

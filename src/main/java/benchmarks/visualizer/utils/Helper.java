@@ -96,4 +96,14 @@ public class Helper {
         
         return new double[]{getStandatdDeviation(list_example), getStandatdDeviation(list_amend)};
     }
+
+    public double[] getStandatdDeviation( List< Integer > list_example, List< Integer > list_amend, List< Integer > list_modified ){
+        // double exampleAverage = list_example.stream().reduce(0, ( a,b ) -> a+b ) / list_example.size();
+        // double amendAverage = list_amend.stream().reduce(0, ( a,b ) -> a+b ) / list_amend.size();
+        
+        return new double[]{
+            getStandatdDeviation(list_example), 
+            getStandatdDeviation(list_amend),
+            getStandatdDeviation(list_modified)};
+    }
 }
