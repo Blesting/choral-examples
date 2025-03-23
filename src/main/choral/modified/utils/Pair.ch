@@ -1,11 +1,11 @@
 package choral.modified.utils;
 
 
-public class Pair@R <T@R> {
+public class Pair@R <T@R, S@R> {
 	private T@R left;
-	private T@R right;
+	private S@R right;
 
-	public Pair( T@R left, T@R right ){
+	public Pair( T@R left, S@R right ){
 		this.left = left;
 		this.right = right;
 	}
@@ -14,7 +14,7 @@ public class Pair@R <T@R> {
 		return left;
 	}
 
-	public T@R right(){
+	public S@R right(){
 		return right;
 	}
 

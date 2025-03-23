@@ -23,15 +23,15 @@ public class Karatsuba@( A, B, C ) {
 			Integer@A splitter = Double@A.valueOf( Math@A.pow( 10@A, m2 ) ).intValue();
 			Long@A h1 = n1 / splitter; Long@A l1 = n1 % splitter;
 			Long@A h2 = n2 / splitter; Long@A l2 = n2 % splitter;
-			Pair@A<Long> lPair_A = new Pair@A<Long>( l1, l2 );
-			Pair@A<Long> nPair_A = new Pair@A<Long>( n1, n2 );
-			Pair@B<Long> lPair_B = ch_AB.< Pair<Long> >com( lPair_A );
-			Pair@C<Long> nPair_C = ch_CA.< Pair<Long> >com( nPair_A );
+			Pair@A<Long, Long> lPair_A = new Pair@A<Long, Long>( l1, l2 );
+			Pair@A<Long, Long> hPair_A = new Pair@A<Long, Long>( h1, h2 );
+			Pair@B<Long, Long> lPair_B = ch_AB.< Pair<Long, Long> >com( lPair_A );
+			Pair@C<Long, Long> hPair_C = ch_CA.< Pair<Long, Long> >com( hPair_A );
 			Long@A z0 = Karatsuba@( B, C, A )
 				.multiply( lPair_B.left(), lPair_B.right(), ch_BC, ch_CA, ch_AB )
 				>> ch_AB::< Long >com;
 			Long@A z2 = Karatsuba@( C, A, B )
-				.multiply( nPair_C.left(), nPair_C.right(), ch_CA, ch_AB, ch_BC )
+				.multiply( hPair_C.left(), hPair_C.right(), ch_CA, ch_AB, ch_BC )
 				>> ch_CA::< Long >com;
 			Long@A z1 = Karatsuba@( A, B, C ).multiply( l1 + h1, l2 + h2, ch_AB, ch_BC, ch_CA ) - z2 - z0;
 			return z2 * splitter * splitter + z1 * splitter + z0;
