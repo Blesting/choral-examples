@@ -37,7 +37,8 @@ public class PlotBenchmarksModified {
     public static final String[] BENCHMARKS = new String[]{
         "mergesort",
         "quicksort",
-        "karatsuba"};
+        "karatsuba",
+        "ssowithretry"};
 
 
     // mvn exec:java -Dexec.mainClass="benchmarks.visualizer.PlotBenchmarksModified"
