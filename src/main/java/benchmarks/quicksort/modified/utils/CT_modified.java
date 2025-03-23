@@ -1,23 +1,23 @@
-package benchmarks.mergesort.amend.utils;
+package benchmarks.quicksort.modified.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import benchmarks.IterationInitializer;
-import benchmarks.mergesort.amend.*;
+import benchmarks.quicksort.modified.*;
 import choral.runtime.LocalChannel.LocalChannel_A;
 import choral.runtime.LocalChannel.LocalChannel_B;
 import choral.runtime.Media.MessageQueue;
 
-public class CT_amend implements IterationInitializer {
+public class CT_modified implements IterationInitializer {
 
     int inputLength;
-    
-    public CT_amend( int inputLength ){
+
+    public CT_modified( int inputLength ){
         this.inputLength = inputLength;
     }
-            
+
     public List<Thread> initialize(){
         List< Integer > inputList = createList();
         List< Thread > threads = new ArrayList<>();
@@ -36,7 +36,7 @@ public class CT_amend implements IterationInitializer {
         LocalChannel_B ch_AC = new LocalChannel_B(AtoC, CtoA);
 
 
-        Runnable runn1 = new Runnable() {
+        Runnable runnB = new Runnable() {
             public void run(){
                 try{
                     B.main( ch_BC, ch_BA );
@@ -45,9 +45,9 @@ public class CT_amend implements IterationInitializer {
                 }
             }
         };
-        threads.add( new Thread( runn1 ) );
+        threads.add( new Thread( runnB, "B" ) );
 
-        Runnable runn2 = new Runnable() {
+        Runnable runnC = new Runnable() {
             public void run(){
                 try{
                     C.main( ch_CA, ch_CB );
@@ -56,9 +56,9 @@ public class CT_amend implements IterationInitializer {
                 }
             }
         };
-        threads.add( new Thread( runn2 ) );
+        threads.add( new Thread( runnC, "C" ) );
 
-        Runnable runn3 = new Runnable() {
+        Runnable runnA = new Runnable() {
             public void run(){
                 try{
                     A.main( inputList, ch_AB, ch_AC );
@@ -67,19 +67,19 @@ public class CT_amend implements IterationInitializer {
                 }
             }
         };
-        threads.add( new Thread( runn3 ) );
+        threads.add( new Thread( runnA, "A" ) );
 
         return threads;
     }
 
     private List<Integer> createList(){
-        List<Integer> input = new ArrayList<>();
-        Random rd = new Random();
-        for( int i = 0; i < inputLength; i++ ){
-            input.add(rd.nextInt());
+            List<Integer> input = new ArrayList<>();
+            Random rd = new Random();
+            for( int i = 0; i < inputLength; i++ ){
+                input.add(rd.nextInt());
+            }
+            return input;
+    
         }
-        return input;
-
-    }
     
 }

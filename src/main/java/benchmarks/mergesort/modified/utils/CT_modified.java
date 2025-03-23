@@ -1,20 +1,20 @@
-package benchmarks.mergesort.amend.utils;
+package benchmarks.mergesort.modified.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import benchmarks.IterationInitializer;
-import benchmarks.mergesort.amend.*;
+import benchmarks.mergesort.modified.*;
 import choral.runtime.LocalChannel.LocalChannel_A;
 import choral.runtime.LocalChannel.LocalChannel_B;
 import choral.runtime.Media.MessageQueue;
 
-public class CT_amend implements IterationInitializer {
-
+public class CT_modified implements IterationInitializer {
+    
     int inputLength;
     
-    public CT_amend( int inputLength ){
+    public CT_modified( int inputLength ){
         this.inputLength = inputLength;
     }
             

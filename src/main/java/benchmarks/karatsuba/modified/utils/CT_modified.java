@@ -1,26 +1,25 @@
-package benchmarks.mergesort.amend.utils;
+package benchmarks.karatsuba.modified.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import benchmarks.IterationInitializer;
-import benchmarks.mergesort.amend.*;
+import benchmarks.karatsuba.modified.*;
 import choral.runtime.LocalChannel.LocalChannel_A;
 import choral.runtime.LocalChannel.LocalChannel_B;
 import choral.runtime.Media.MessageQueue;
 
-public class CT_amend implements IterationInitializer {
+public class CT_modified implements IterationInitializer {
 
-    int inputLength;
-    
-    public CT_amend( int inputLength ){
-        this.inputLength = inputLength;
-    }
+    public CT_modified(){}
             
     public List<Thread> initialize(){
-        List< Integer > inputList = createList();
         List< Thread > threads = new ArrayList<>();
+        
+        Random rd = new Random();
+        Long n1 = Math.abs(rd.nextLong());
+        Long n2 = Math.abs(rd.nextLong());
 
         MessageQueue AtoB = new MessageQueue();
         MessageQueue BtoA = new MessageQueue();
@@ -39,7 +38,7 @@ public class CT_amend implements IterationInitializer {
         Runnable runn1 = new Runnable() {
             public void run(){
                 try{
-                    B.main( ch_BC, ch_BA );
+                    A.main( n1, n2, ch_AB, ch_AC );
                 } catch (Exception e){
                     e.printStackTrace();
                 }
@@ -50,7 +49,7 @@ public class CT_amend implements IterationInitializer {
         Runnable runn2 = new Runnable() {
             public void run(){
                 try{
-                    C.main( ch_CA, ch_CB );
+                    B.main( ch_BA, ch_BC );
                 } catch (Exception e){
                     e.printStackTrace();
                 }
@@ -61,7 +60,7 @@ public class CT_amend implements IterationInitializer {
         Runnable runn3 = new Runnable() {
             public void run(){
                 try{
-                    A.main( inputList, ch_AB, ch_AC );
+                    C.main( ch_CB, ch_CA );
                 } catch (Exception e){
                     e.printStackTrace();
                 }
@@ -70,16 +69,6 @@ public class CT_amend implements IterationInitializer {
         threads.add( new Thread( runn3 ) );
 
         return threads;
-    }
-
-    private List<Integer> createList(){
-        List<Integer> input = new ArrayList<>();
-        Random rd = new Random();
-        for( int i = 0; i < inputLength; i++ ){
-            input.add(rd.nextInt());
-        }
-        return input;
-
     }
     
 }
