@@ -25,7 +25,7 @@ public class PlotBenchmarksModified {
     /** Remove the first n elements to only use datapoints captured on a "warm" system */
     public static final int WARM_UP_REMOVAL = 100;
     /** Remove the top and bottom n percent of elements to decrease the impact of outliers */
-    public static final double TRIM_AMOUNT = 0.02;
+    public static final double TRIM_AMOUNT = 0.04;
     /** The location of the benchmarks */
     public static final String TARGET_FOLDER = "target/benchmarks/";
     /** Whether to reduce the amount of bars to show on the graph (done by rounding runtimes to nearest 1ms, 2ms, 4ms ...) */
@@ -63,6 +63,8 @@ public class PlotBenchmarksModified {
     }
 
     private static void plotBenchmark( String benchmark, String outputFile, Helper helper ){
+        System.out.println( "\nBenchmark: " + benchmark );
+        System.out.println( "Looking at file: " + outputFile );
         String benchmarkDir = TARGET_FOLDER + benchmark + "/modified/";
 
         String exampleBenckmark = benchmarkDir + outputFile;
@@ -73,19 +75,26 @@ public class PlotBenchmarksModified {
         List<Double> dataList_amend = helper.loadData( amendBenchmark );
         List<Double> dataList_modified = helper.loadData( modifiedBenchmark );
 
-        double[] standardDeviations = helper.getStandatdDeviation( dataList_example.stream()
-                                                                .map( time -> time.intValue() )
-                                                                .toList(),
-                                                            dataList_amend.stream()
-                                                                .map( time -> time.intValue() )
-                                                                .toList(),
-                                                            dataList_modified.stream()
-                                                                .map( time -> time.intValue() )
-                                                                .toList() );
+        List< Integer > roundedDataList_example = dataList_example.stream()
+            .map( time -> time.intValue() )
+            .toList();
+        List< Integer > roundedDataList_amend = dataList_amend.stream()
+            .map( time -> time.intValue() )
+            .toList();
+        List< Integer > roundedDataList_modified = dataList_modified.stream()
+            .map( time -> time.intValue() )
+            .toList();
+
+        double[] standardDeviations = helper.getStandatdDeviation( roundedDataList_example,
+                                                                    roundedDataList_amend,
+                                                                    roundedDataList_modified );
         
         System.out.println( "baseline standard deviation: \t" + standardDeviations[0] );
-        System.out.println( "amend standard deviation: \t" + standardDeviations[1] );
+        System.out.println( "inferred standard deviation: \t" + standardDeviations[1] );
         System.out.println( "modified standard deviation: \t" + standardDeviations[2] );
+        System.out.println( "baseline average: \t" + helper.getAverage(roundedDataList_example) );
+        System.out.println( "inferred average: \t" + helper.getAverage(roundedDataList_amend) );
+        System.out.println( "modified average: \t" + helper.getAverage(roundedDataList_modified) );
 
         DefaultCategoryDataset dataset = createCategoryDataset( dataList_example, dataList_amend, dataList_modified );
 

@@ -79,8 +79,12 @@ public class Helper {
         return Integer.valueOf(filename.substring( lastUnderscore+1, lastDot ));
     }
 
+    public double getAverage( List< Integer > list ){
+        return list.stream().reduce(0, ( a,b ) -> a+b ) / list.size();
+    }
+
     public double getStandatdDeviation( List< Integer > list ){
-        double average = list.stream().reduce(0, ( a,b ) -> a+b ) / list.size();
+        double average = getAverage(list);
 
         double sum = list.stream()
             .map( val -> (val - average) * (val - average) )
