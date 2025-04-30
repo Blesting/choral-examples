@@ -10,3 +10,7 @@ echo ""
 echo "== amend Karatsuba =="
 choral epp -s src/main/choral/modified/ -l src/main/choral/ -t target/generated-sources/choral/ Karatsuba
 
+echo ""
+echo "== amend SSOWithRetry =="
+choral epp -s src/main/choral/modified/ -l src/main/choral/ -t target/generated-sources/choral/ SSOWithRetry
+
