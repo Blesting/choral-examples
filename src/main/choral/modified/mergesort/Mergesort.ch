@@ -6,7 +6,7 @@ import java.util.List;
 
 enum MChoice@R { L, R }
 
-enum MergeA@R { ONE, TWO, THREE, FOUR }
+enum MergeA@R { ZERO, ONE, TWO, THREE, FOUR }
 
 public class Mergesort@( A, B, C ){
 
@@ -57,15 +57,17 @@ public class Mergesort@( A, B, C ){
 				ch_BC.< MChoice >select( MChoice@C.L );
 
 				if( lhs.get( 0@B ) <= ch_BC.< Integer >com( rhs.get( 0@C ) ) ){
-					ch_AB.< MergeA >select( MergeA@B.ONE );	
 					ch_BC.< MChoice >select( MChoice@B.L );
+					ch_AB.< MergeA >select( MergeA@B.ONE );	
+	
 					ArrayList@A< Integer > result = new ArrayList@A< Integer >();
 					lhs.get( 0@B ) >> ch_AB::< Integer >com >> result::add;
 					merge( lhs.subList( 1@B, lhs.size() ), rhs ) >> result::addAll;
 					return result;
 				} else {
-					ch_AB.< MergeA >select( MergeA@B.TWO );	
 					ch_BC.< MChoice >select( MChoice@B.R );
+					ch_AB.< MergeA >select( MergeA@B.TWO );	
+
 					ArrayList@A< Integer > result = new ArrayList@A< Integer >();
 					rhs.get( 0@C ) >> ch_CA::< Integer >com >> result::add;
 					merge( lhs, rhs.subList( 1@C, rhs.size() ) ) >> result::addAll;
@@ -78,8 +80,8 @@ public class Mergesort@( A, B, C ){
 				return lhs >> ch_AB::< List< Integer > >com;
 			}
 		} else {
-			ch_AB.< MergeA >select( MergeA@B.FOUR );
 			ch_BC.< MChoice >select( MChoice@B.R );
+			ch_AB.< MergeA >select( MergeA@B.FOUR );
 			return rhs >> ch_CA::< List< Integer > >com;
 		}
 	}

@@ -31,8 +31,8 @@ public class SSOWithRetry@( C, S, CAS ){
         Boolean@CAS client_again = msg_CAS.right();
 
         if( authenticator.valid(x) ){
-            ch_CASC.< Validity_Retry >select( Validity_Retry@CAS.TOKEN );
             ch_SCAS.< Validity_Retry >select( Validity_Retry@CAS.TOKEN );
+            ch_CASC.< Validity_Retry >select( Validity_Retry@CAS.TOKEN );
             Token@C t = ch_CS.<Token>com( service.newToken() );
         }
         else{

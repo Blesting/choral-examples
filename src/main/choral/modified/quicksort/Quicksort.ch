@@ -66,8 +66,8 @@ public class Quicksort@( A, B, C ){
 					i >> ch_AB::< Integer >com >> greater::add;
 					partition( a, pivot, greater, lower );
 				} else {
-					ch_AB.< Recv >select( Recv@A.C );
 					ch_CA.< Recv >select( Recv@A.C );
+					ch_AB.< Recv >select( Recv@A.C );
 					i >> ch_CA::< Integer >com >> lower::add;
 					partition( a, pivot, greater, lower );
 				}
