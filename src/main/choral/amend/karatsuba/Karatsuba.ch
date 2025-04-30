@@ -22,10 +22,10 @@ public class Karatsuba@( A, B, C ) {
 			Integer@A splitter = Double@A.valueOf( Math@A.pow( 10@A, m2 ) ).intValue();
 			Long@A h1 = n1 / splitter; Long@A l1 = n1 % splitter;
 			Long@A h2 = n2 / splitter; Long@A l2 = n2 % splitter;
-			Long@A z0 = Karatsuba@( B, C, A )
+			Long@B z0 = Karatsuba@( B, C, A )
 				.multiply( l1, l2, ch_BC, ch_CA, ch_AB );
 
-			Long@A z2 = Karatsuba@( C, A, B )
+			Long@C z2 = Karatsuba@( C, A, B )
 				.multiply( h1, h2, ch_CA, ch_AB, ch_BC );
 
 			Long@A z1 = Karatsuba@( A, B, C ).multiply( l1 + h1, l2 + h2, ch_AB, ch_BC, ch_CA ) - z2 - z0;
