@@ -2,32 +2,32 @@ This is a repository containing use cases and examples of choreographies written
 
 # Installation
 
-The project requires maven and JDK 17.
+The project requires Maven, JDK 17, and a `minizinc` executable 
+with the `org.gecode.gecode` solver in your `$PATH`.
 
-1. Make sure you have the Choral libraries installed (=org.choral-lang:choral=
-   and =org.choral-lang:runtime=). To do this, clone the 
-   [[https://github.com/choral-lang/choral][Choral repository]] and build and 
-   install the libraries:
+1. Make sure you have the Choral libraries installed (`org.choral-lang:choral`
+   and `org.choral-lang:runtime`). To do this, clone the
+   [Choral repository](https://github.com/choral-lang/choral) and build and 
+   install the libraries with `mvn install`.
 
-   #+BEGIN_EXAMPLE
-     mvn install
-   #+END_EXAMPLE
-
-2. Make sure you have the =choral= compiler script on your =PATH= and that
-   you've set =CHORAL_PATH=.
+2. Make sure you have the `choral` compiler script on your `PATH` and that
+   you've set `CHORAL_PATH`.
 
    The script is a wrapper that looks for the Choral standalone JAR under
-   =CHORAL_HOME= and invokes it. The version of the JAR should match the version
+   `CHORAL_HOME` and invokes it. The version of the JAR should match the version
    of the runtime you've installed.
 
    When building Choral from source, You can find the JAR under Choral's
-   =dist/target=, which you can use as your =CHORAL_PATH=.
+   `dist/target`, which you can use as your `CHORAL_PATH`.
 
-3. To build this project, run the following command in the root directory:
 
-   #+BEGIN_EXAMPLE
-     mvn compile
-   #+END_EXAMPLE
+To build this project, run the following commands in the root directory:
+
+```bash
+bash scripts/createModifiedBenchmarks.sh
+bash scripts/createAmendedBenchmarks.sh
+mvn compile
+```
 
 
 # Adding examples
@@ -38,7 +38,7 @@ Let's say the main Choral class you're compiling is called `MyExample`.
 You'll need to update `pom.xml` to compile your example. Look for `exec-maven-plugin`---it
 looks something like this:
 
-```
+```xml
 <plugin>
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>exec-maven-plugin</artifactId>
@@ -52,7 +52,7 @@ looks something like this:
 In the `<executions>` field, add a new execution for your example. Use the following
 template, updating the `<id>` field and the last `<argument>` field.
 
-```
+```xml
 <execution>
     <id>choral-epp-bipair</id>       <!-- UPDATE THIS ID -->
     <phase>generate-sources</phase>
