@@ -1,4 +1,4 @@
-This is a repository containing use cases and examples of choreographies written in the [Choral language](https://choral-lang.org).
+Benchmarks and examples for the Choral [MoveMeant](https://github.com/Blesting/choral) optimizer.
 
 # Installation
 
@@ -21,7 +21,7 @@ with the `org.gecode.gecode` solver in your `$PATH`.
    `dist/target`, which you can use as your `CHORAL_PATH`.
 
 
-To build this project, run the following commands in the root directory:
+To build this project, run the following commands in the project root directory:
 
 ```bash
 bash scripts/createModifiedBenchmarks.sh
